@@ -28,9 +28,11 @@ export const Footer = () => (
       </span>
       <span>
         Coded with <strong>{`<3`}</strong> by{" "}
-        <Link href="https://github.com/Saeris" external>
-          Drake Costa
-        </Link>
+        <strong>
+          <Link href="https://github.com/Saeris" external>
+            Drake Costa
+          </Link>
+        </strong>
       </span>
     </div>
   </footer>
