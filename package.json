@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "keywords": ["preact", "the movie db", "apollo", "graphql", "saeris.io"],
-  "homepage": "https://codesandbox.io/s/pw9pr0vkw0",
+  "homepage": "https://codesandbox.io/s/github/Saeris/mini-movie-db",
   "main": "src/index.js",
   "dependencies": {
     "@fortawesome/fontawesome": "1.1.4",
