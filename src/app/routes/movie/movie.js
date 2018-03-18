@@ -56,7 +56,7 @@ export const Movie = ({ match: { params: { id } } }) => (
         } = movie
 
         return (
-          <div>
+          <div className="fullWidth">
             <section id="highlights">
               <Overlay bg={backdrop}>
                 <div className="container">
