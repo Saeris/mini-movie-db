@@ -12,7 +12,10 @@ export const Footer = () => (
         </strong>{" "}
         powered by{" "}
         <strong>
-          <Link href="https://codesandbox.io/s/pw9pr0vkw0" external>
+          <Link
+            href="https://codesandbox.io/s/github/Saeris/mini-movie-db"
+            external
+          >
             Preact
           </Link>
         </strong>{" "}
