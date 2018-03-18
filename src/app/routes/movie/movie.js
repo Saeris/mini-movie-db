@@ -7,8 +7,6 @@ import { Loading, Layout, OnError } from "../../components/structural"
 import { Overlay } from "./backdrop"
 import "./movie.scss"
 
-const basePath = `https://image.tmdb.org/t/p/w300/`
-
 const fetchMovie = gql`
   query fetchMovie($id: ID!) {
     movie(id: $id) {
@@ -62,7 +60,10 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <div className="container">
                   <div className="summary">
                     <div className="poster">
-                      <img src={`${basePath}${poster}`} alt={title} />
+                      <img
+                        src={`//image.tmdb.org/t/p/w300/${poster}`}
+                        alt={title}
+                      />
                     </div>
                     <div className="info">
                       <div className="title">

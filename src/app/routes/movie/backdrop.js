@@ -5,8 +5,6 @@ import styled from "styled-components"
 import { lighten, darken } from "polished"
 import { memoize } from "../../utils/memoize"
 
-const baseURL = `//image.tmdb.org/t/p/w1400_and_h450_face`
-
 const Backdrop = styled.div`
   width: 100%;
   position: relative;
@@ -25,7 +23,7 @@ const Backdrop = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-image: url(${({ img }) => `${baseURL}${img}`});
+    background-image: url(${({ img }) => `${img}`});
     will-change: opacity;
     transition: filter 1s;
   }
@@ -54,13 +52,13 @@ export class Overlay extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bg: props.bg,
+      bg: `//image.tmdb.org/t/p/w1400_and_h450_face/${props.bg}`,
       color: [255, 255, 255]
     }
   }
 
   async componentDidMount() {
-    const color = await cachedColor(`${baseURL}${this.state.bg}`).then(color =>
+    const color = await cachedColor(this.state.bg).then(color =>
       color.map(x => parseInt(x, 10))
     )
     this.setState({
@@ -68,7 +66,7 @@ export class Overlay extends Component {
     })
   }
 
-  render({ bg, children }, { color }) {
+  render({ children }, { bg, color }) {
     return (
       <Backdrop img={bg}>
         <Gradient color={color}>{children}</Gradient>
