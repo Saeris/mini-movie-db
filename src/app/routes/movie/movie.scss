@@ -1,0 +1,137 @@
+#highlights {
+  display: block;
+  padding: 0;
+
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    z-index: 0;
+
+    .summary {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      color: #fff;
+
+      .poster {
+        display: block;
+        width: 300px;
+        height: 450px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .info {
+        display: flex;
+        flex-wrap: wrap;
+        width: 700px;
+        box-sizing: border-box;
+        padding-left: 40px;
+        min-height: 450px;
+
+        .title {
+          flex: 0 0 auto;
+          width: 100%;
+          margin-bottom: 30px;
+
+          h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 3rem;
+            line-height: 4.2rem;
+            font-weight: 700;
+            display: inline-block;
+          }
+
+          span {
+            opacity: 0.6;
+            font-size: 2.7rem;
+            font-weight: 400;
+            line-height: 4.2rem;
+          }
+        }
+
+        h2 {
+          width: 100%;
+          margin: 0 0 8px 0;
+          font-weight: 600;
+          line-height: 2.1rem;
+          font-size: 2.1rem;
+        }
+
+        .overview {
+          flex: 1 1 auto;
+          width: 100%;
+
+          p {
+            margin: 0;
+            font-size: 1.6rem;
+          }
+        }
+
+        .crew {
+          flex: 1 1 auto;
+          width: 100%;
+
+          ul {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+
+            li {
+              display: flex;
+              flex-direction: column;
+              width: 33%;
+              text-align: left;
+              box-sizing: border-box;
+              padding-right: 2rem;
+              margin-top: 2rem;
+
+              strong {
+                font-size: 1.6rem;
+                font-weight: 700;
+                line-height: 2.2rem;
+              }
+
+              span {
+                font-size: 1.4rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#details {
+  display: flex;
+  justify-content: center;
+  padding-left: 5rem;
+  padding-right: 5rem;
+
+  .cast {
+    flex: 1 1 auto;
+    max-width: 100rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    h1 {
+      width: 100%;
+      font-weight: 600;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}

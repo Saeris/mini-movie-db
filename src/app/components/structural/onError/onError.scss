@@ -1,0 +1,14 @@
+.error {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  h1 {
+    font-size: 2rem;
+    width: 100%;
+    margin: 0;
+    font-weight: 600;
+  }
+}

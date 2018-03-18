@@ -1,0 +1,62 @@
+@import "fonts.scss";
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+textarea,
+input,
+button {
+  outline: none;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 30px white inset;
+}
+
+html,
+body {
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  button {
+    border: none;
+    background: none;
+
+    &:active {
+      outline: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      width: auto;
+    }
+  }
+}
