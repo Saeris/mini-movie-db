@@ -1,40 +1,56 @@
 .posterCard {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   display: flex;
-  align-items: center;
+  max-width: 49.2rem;
   margin-top: 1.6rem;
   color: #000;
-  width: 483px;
   background-color: #fff;
-  box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 600px) {
+    width: 18.5rem;
+  }
 
   .poster {
-    width: 185px;
-    height: 278px;
-    line-height: 0;
+    flex: 0 0 auto;
+    width: 18.5rem;
+    height: 27.8rem;
   }
 
   .info {
     position: relative;
-    width: 298px;
-    height: 278px;
-    padding: 1rem 1.6rem 1.6rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 20rem;
+    max-width: 100%;
+    height: 27.8rem;
     box-sizing: border-box;
     overflow: hidden;
 
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
     .title {
+      flex: 0 1 auto;
+      display: flex;
+      flex-direction: column;
+      padding: 1.6rem;
+
       h2 {
-        display: block;
-        width: 100%;
+        flex: 0 1 auto;
         font-weight: 600;
         font-size: 1.8rem;
         line-height: 1.8rem;
         margin: 0;
+        margin-bottom: 0.4rem;
         padding: 0;
       }
 
       span {
+        flex: 0 1 auto;
         color: rgba(0, 0, 0, 0.6);
         line-height: 1.6rem;
         font-size: 1.6rem;
@@ -42,32 +58,21 @@
     }
 
     .overview {
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      margin-top: 30px;
+      flex: 1 1 auto;
+      padding: 0rem 1.6rem 1.6rem 1.6rem;
       color: #4d4d4d;
       font-size: 1.4rem;
       line-height: 1.8rem;
-      overflow: hidden;
-      white-space: normal;
-      word-wrap: break-word;
-      text-overflow: ellipsis;
     }
 
     .more {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 16px;
+      flex: 0 1 auto;
+      height: 5rem;
+      padding: 1.6rem;
       margin: 0;
       font-size: 1.4rem;
-      line-height: 1.8rem;
-      border-top: 1px solid #e3e3e3;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.6rem;
+      border-top: 0.1rem solid #e3e3e3;
     }
   }
 }

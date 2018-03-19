@@ -98,7 +98,7 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <ul>
                   {cast.map(({ profile_path, name, character }) => (
                     <PortraitCard
-                      img={`//image.tmdb.org/t/p/w138_and_h175_face/${profile_path}`}
+                      img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${profile_path}`}
                       name={name}
                       description={character}
                     />
@@ -111,7 +111,7 @@ export const Movie = ({ match: { params: { id } } }) => (
                   {similar.map(
                     ({ id: similarId, poster, title, release_date }) => (
                       <PortraitCard
-                        img={`//image.tmdb.org/t/p/w138_and_h175_face/${poster}`}
+                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${poster}`}
                         name={title}
                         description={format(release_date, `MMMM D, YYYY`)}
                         link={`/movies/${similarId}`}

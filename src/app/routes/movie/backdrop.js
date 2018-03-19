@@ -29,11 +29,13 @@ const Backdrop = styled.div`
   }
 `
 const extractColor = async url => {
+  if (!url) return [8, 28, 37]
   let img = new Image()
   img.src = url + "?" + new Date().getTime()
   img.setAttribute("crossOrigin", "")
-  const colors = await Vibrant.from(img).getPalette()
-  return colors.Vibrant.getRgb()
+  const extracted = await Vibrant.from(img)
+  const palette = await extracted.getPalette()
+  return palette.Vibrant.getRgb() || palette.Muted.getRgb()
 }
 
 const cachedColor = memoize(extractColor)
@@ -52,8 +54,10 @@ export class Overlay extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bg: `//image.tmdb.org/t/p/w1400_and_h450_face/${props.bg}`,
-      color: [255, 255, 255]
+      bg: props.bg
+        ? `//image.tmdb.org/t/p/w1400_and_h450_face/${props.bg}`
+        : null,
+      color: [8, 28, 37]
     }
   }
 
@@ -62,7 +66,7 @@ export class Overlay extends Component {
       color.map(x => parseInt(x, 10))
     )
     this.setState({
-      color: color || [255, 255, 255]
+      color: color || [8, 28, 37]
     })
   }
 
