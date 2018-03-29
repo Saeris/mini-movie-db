@@ -32,6 +32,7 @@ module.exports = {
         loader: `babel-loader`,
         exclude: /node_modules/,
         options: {
+          babelrc: false,
           plugins: [require(`@babel/plugin-transform-runtime`)],
           presets: [
             [require(`@babel/preset-env`), { targets: { node: `6.10` } }],
