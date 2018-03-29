@@ -1,4 +1,5 @@
 # The Mini Movie DB
+
 [![Build Status](https://travis-ci.org/Saeris/mini-movie-db.svg?branch=master)](https://travis-ci.org/Saeris/mini-movie-db)
 [![codecov](https://codecov.io/gh/Saeris/mini-movie-db/branch/master/graph/badge.svg)](https://codecov.io/gh/Saeris/mini-movie-db)
 [![Greenkeeper badge](https://badges.greenkeeper.io/Saeris/mini-movie-db.svg)](https://greenkeeper.io/)
