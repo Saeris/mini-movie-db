@@ -14,8 +14,8 @@ const searchState = gql`
 `
 
 const searchMovies = gql`
-  query searchMovies($query: String!) {
-    movies: search(query: $query) {
+  query searchMovies($query: String!, $page: Int!) {
+    movies: search(query: $query, page: $page) {
       id
       title
       overview
@@ -25,8 +25,8 @@ const searchMovies = gql`
   }
 `
 const fetchPopular = gql`
-  query fetchPopular {
-    movies: popular {
+  query fetchPopular($page: Int!) {
+    movies: popular(page: $page) {
       id
       title
       overview
@@ -37,20 +37,34 @@ const fetchPopular = gql`
 `
 
 const SearchResults = ({ data: { searchQuery, searchVariables } }) => (
-  <section id="searchresults">
-    <h1>{searchQuery ? `Search Results` : `Popular Movies`}</h1>
-    <Query
-      query={searchQuery ? searchMovies : fetchPopular}
-      variables={searchVariables}
-    >
-      {({ loading, error, data }) => {
-        if (loading) return <Loading />
-        if (error) return <OnError />
+  <Query
+    query={searchQuery ? searchMovies : fetchPopular}
+    variables={{ page: 1, ...searchVariables }}
+  >
+    {({ loading, error, data, fetchMore }) => {
+      if (loading) return <Loading />
+      if (error) return <OnError />
 
-        return <ul className="movielist">{data.movies.map(PosterCard)}</ul>
-      }}
-    </Query>
-  </section>
+      return (
+        <section id="searchresults">
+          <h1>{searchQuery ? `Search Results` : `Popular Movies`}</h1>
+          <ul className="movielist">{data.movies.map(PosterCard)}</ul>
+          <button
+            className="loadMore"
+            onclick={() =>
+              fetchMore({
+                variables: { page: 2, ...searchVariables },
+                updateQuery: (prev, { fetchMoreResult }) =>
+                  (fetchMoreResult ? { movies: [...prev.movies, ...fetchMoreResult.movies] } : prev)
+              })
+            }
+          >
+            Fetch More
+          </button>
+        </section>
+      )
+    }}
+  </Query>
 )
 
 export default graphql(searchState)(SearchResults)

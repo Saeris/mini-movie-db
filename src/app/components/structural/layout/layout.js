@@ -1,4 +1,5 @@
-import { Header, Footer } from "../"
+import { Header } from "../header"
+import { Footer } from "../footer"
 import "./layout.scss"
 
 export const Layout = ({ children }) => (

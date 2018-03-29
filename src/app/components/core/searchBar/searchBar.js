@@ -1,3 +1,4 @@
+import { Component } from "preact"
 import { Mutation } from "react-apollo"
 import { withFormik } from "formik"
 import FontAwesomeIcon from "@fortawesome/react-fontawesome"
@@ -12,42 +13,54 @@ const searchMovies = gql`
   }
 `
 
-const SearchForm = ({
-  handleSubmit,
-  handleChange,
-  handleBlur,
-  handleReset,
-  values,
-  dirty,
-  isSubmitting
-}) => (
-  <form id="searchbar" onSubmit={handleSubmit}>
-    <div className="search">
-      <button type="submit" disabled={isSubmitting}>
-        <FontAwesomeIcon icon={faSearch} size="2x" />
-      </button>
-      <input
-        id="query"
-        placeholder="Search for a movie by title..."
-        type="text"
-        value={values.query}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        autocomplete={false}
-      />
-      <button
-        type="button"
-        onClick={() => {
-          handleReset()
-          values.mutate({ variables: { query: `` } })
-        }}
-        disabled={!dirty || isSubmitting}
-      >
-        <FontAwesomeIcon icon={faTimes} size="2x" />
-      </button>
-    </div>
-  </form>
-)
+class SearchForm extends Component {
+  componentWillUnmount = () => {
+    if (this.props.dirty) {
+      console.log(`Resetting search form on dismount.`)
+      this.props.handleReset()
+      this.props.values.mutate({ variables: { query: `` } })
+    }
+  }
+
+  render({
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    handleReset,
+    values,
+    dirty,
+    isSubmitting
+  }) {
+    return (
+      <form id="searchbar" onSubmit={handleSubmit}>
+        <div className="search">
+          <button type="submit" disabled={isSubmitting}>
+            <FontAwesomeIcon icon={faSearch} size="2x" />
+          </button>
+          <input
+            id="query"
+            placeholder="Search for a movie by title..."
+            type="text"
+            value={values.query}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            autocomplete={false}
+          />
+          <button
+            type="button"
+            onClick={() => {
+              handleReset()
+              values.mutate({ variables: { query: `` } })
+            }}
+            disabled={!dirty || isSubmitting}
+          >
+            <FontAwesomeIcon icon={faTimes} size="2x" />
+          </button>
+        </div>
+      </form>
+    )
+  }
+}
 
 const EnhancedForm = withFormik({
   mapPropsToValues: ({ mutate }) => ({ mutate, query: `` }),

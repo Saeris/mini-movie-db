@@ -2,15 +2,17 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f4f4f4;
   width: 100%;
   min-height: 100vh;
+  background-color: #f4f4f4;
 
   section {
-    flex: 1 1 auto;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex: 1 1 auto;
+    flex: {
+      direction: column;
+      wrap: wrap;
+    }
     align-items: center;
     width: 100%;
   }

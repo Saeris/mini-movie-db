@@ -1,3 +1,4 @@
+export { Overlay } from "./backdrop"
 export { Link } from "./link"
 export { PortraitCard } from "./portraitCard"
 export { PosterCard } from "./posterCard"

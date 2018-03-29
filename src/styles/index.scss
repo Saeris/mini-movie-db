@@ -18,13 +18,15 @@ input:-webkit-autofill {
 
 html,
 body {
-  font-family: "Source Sans Pro", Arial, sans-serif;
-  font-weight: 400;
-  color: #444;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  font: {
+    family: "Source Sans Pro", arial, sans-serif;
+    weight: 400;
+  }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #444;
 
   button {
     border: none;

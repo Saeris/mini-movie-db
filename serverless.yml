@@ -1,0 +1,43 @@
+service: mini-movie-db
+
+frameworkVersion: ">=1.21.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-west-2
+  environment:
+    apikey: ${file(./serverless.env.yml):movieDBApiKey}
+    stage: ${opt:stage, ""}
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+package:
+  individually: true
+
+custom:
+  serverless-offline:
+    port: 1337
+  webpack:
+    includeModules: true
+    packager: 'yarn'
+    webpackConfig: 'webpack.api.config.js'
+
+functions:
+  api:
+    handler: api/index.graphqlHandler
+    events:
+      - http:
+          path: "{proxy+}"
+          method: any
+          cors: true
+  playground:
+      handler: api/playground.playgroundHandler
+      events:
+        - http:
+            path: "/playground"
+            method: get
+            cors: true

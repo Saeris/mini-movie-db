@@ -1,29 +1,28 @@
 footer {
-  flex: 0 0 auto;
   display: flex;
+  flex: 0 0 auto;
   justify-content: center;
   width: 100%;
+  padding: 5rem;
   margin-top: auto;
-  background: #081c25;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  border-top: 1px solid #00d573;
   font-size: 1.3rem;
   line-height: 3.2rem;
-  text-align: center;
-  border-top: 1px solid #00d573;
   color: #fff;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  text-align: center;
+  background: #081c25;
 
   .wrapper {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     max-width: 100rem;
-    justify-content: space-between;
 
     span {
-      font-weight: bold;
-      font-size: 1.4rem;
+      font: {
+        size: 1.4rem;
+        weight: bold;
+      }
       line-height: 1.4rem;
       text-transform: uppercase;
       white-space: nowrap;

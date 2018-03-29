@@ -1,0 +1,252 @@
+#highlights {
+  display: block;
+  padding: 0;
+
+  .container {
+    z-index: 0;
+    width: 100%;
+    max-width: 1000px;
+    padding: {
+      top: 40px;
+      right: 5rem;
+      bottom: 40px;
+      left: 5rem;
+    }
+    margin: 0 auto;
+
+    .summary {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      color: #fff;
+
+      .poster {
+        position: relative;
+        z-index: 2;
+        display: block;
+        width: 300px;
+        height: 450px;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+        min-height: 450px;
+        padding-left: 40px;
+        box-sizing: border-box;
+
+        .title {
+          flex: 0 0 auto;
+          width: 100%;
+          margin-bottom: 3rem;
+
+          h1 {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            font: {
+              size: 3rem;
+              weight: 700;
+            }
+            line-height: 4.2rem;
+          }
+
+          span {
+            font: {
+              size: 2.7rem;
+              weight: 400;
+            }
+            line-height: 4.2rem;
+            opacity: 0.6;
+          }
+        }
+
+        .actions {
+          display: flex;
+          flex: 0 0 auto;
+          margin-bottom: 3rem;
+
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.7rem;
+            color: #fff;
+            vertical-align: middle;
+            cursor: pointer;
+
+            svg {
+              margin-right: 0.5rem;
+            }
+
+            &:hover {
+              color: #00d573;
+            }
+          }
+        }
+
+        h2 {
+          width: 100%;
+          margin: 0 0 8px;
+          font: {
+            size: 2.1rem;
+            weight: 600;
+          }
+          line-height: 2.1rem;
+        }
+
+        .overview {
+          flex: 1 1 auto;
+          width: 100%;
+          margin-bottom: 3rem;
+
+          p {
+            margin: 0;
+            font-size: 1.6rem;
+          }
+        }
+
+        .crew {
+          flex: 1 1 auto;
+          width: 100%;
+
+          ul {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+
+            li {
+              display: flex;
+              flex-direction: column;
+              width: 33%;
+              padding-right: 2rem;
+              margin-top: 2rem;
+              box-sizing: border-box;
+              text-align: left;
+
+              strong {
+                font: {
+                  size: 1.6rem;
+                  weight: 700;
+                }
+                line-height: 2.2rem;
+              }
+
+              span {
+                font-size: 1.4rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#details {
+  display: flex;
+  justify-content: center;
+  padding: {
+    right: 5rem;
+    left: 5rem;
+  }
+
+  .cast {
+    flex: 1 1 auto;
+    max-width: 100rem;
+    padding: {
+      top: 4rem;
+      bottom: 4rem;
+    }
+
+    h1 {
+      width: 100%;
+      margin-bottom: 2rem;
+      font: {
+        size: 2.2rem;
+        weight: 600;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 2s ease-in;
+
+  &.open {
+    display: flex;
+    opacity: 1;
+    transition: opacity 2s ease-in;
+  }
+
+  .dialog {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 100rem;
+    background-color: rgba(0, 0, 0, 0.75);
+
+    .header {
+      display: flex;
+      flex: 0 0 auto;
+      justify-content: space-between;
+      width: 100%;
+      height: 5rem;
+      padding: 1.6rem;
+
+      h1 {
+        padding: 0;
+        margin: 0;
+        font: {
+          size: 1.6rem;
+          weight: 700;
+        }
+      }
+
+      button {
+        color: #fff;
+        cursor: pointer;
+
+        &:hover {
+          color: #00d573;
+        }
+      }
+    }
+
+    span {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+
+      > iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

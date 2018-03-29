@@ -3,12 +3,16 @@
   flex-direction: column;
   width: 15rem;
   padding-bottom: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
+  margin: {
+    top: 1rem;
+    right: 1rem;
+  }
   border: 1px solid #e3e3e3;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  box-sizing: content-box;
+  box: {
+    sizing: content-box;
+    shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
 
   img {
     transition: filter 0.1s linear;
@@ -19,9 +23,11 @@
   }
 
   strong {
-    padding: 10px 10px 0 10px;
-    font-size: 1.6rem;
-    font-weight: 700;
+    padding: 10px 10px 0;
+    font: {
+      size: 1.6rem;
+      weight: 700;
+    }
   }
 
   span {

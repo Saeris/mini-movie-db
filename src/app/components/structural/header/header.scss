@@ -2,8 +2,10 @@ header {
   display: flex;
   flex: 0 0 auto;
   justify-content: center;
-  background-color: #081c24;
   width: 100%;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding: {
+    right: 5rem;
+    left: 5rem;
+  }
+  background-color: #081c24;
 }

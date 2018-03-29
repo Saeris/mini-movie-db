@@ -1,0 +1,41 @@
+language: node_js
+node_js:
+  - "node"
+  - "8"
+
+cache:
+  directories:
+    - node_modules
+
+branches:
+  only:
+  - develop
+  - master
+
+before_install:
+  - yarn global add greenkeeper-lockfile@1
+
+install:
+  - yarn
+
+before_script:
+  - greenkeeper-lockfile-update
+  - yarn test
+
+after_script:
+  - greenkeeper-lockfile-upload
+
+after_success:
+  - yarn coverage
+
+deploy:
+  # deploy develop to the staging environment
+  - provider: script
+    script: yarn deploy:dev
+    on:
+      branch: develop
+  # deploy master to production
+  - provider: script
+    script: yarn deploy:prod
+    on:
+      branch: master

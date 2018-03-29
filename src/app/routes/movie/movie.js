@@ -2,9 +2,11 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import format from "date-fns/format"
 import { Link } from "react-router-dom"
-import { PortraitCard } from "../../components/core"
-import { Loading, Layout, OnError } from "../../components/structural"
-import { Overlay } from "./backdrop"
+import FontAwesomeIcon from "@fortawesome/react-fontawesome"
+import { faPlay, faTimes } from "@fortawesome/fontawesome-free-solid"
+import YouTube from "react-youtube"
+import { Overlay, PortraitCard } from "../../components/core"
+import { Loading, Layout, Modal, OnError } from "../../components/structural"
 import "./movie.scss"
 
 const fetchMovie = gql`
@@ -17,11 +19,13 @@ const fetchMovie = gql`
       poster
       backdrop
       cast(limit: 6) {
+        id
         name
         character
         profile_path
       }
       crew(limit: 6) {
+        id
         name
         job
         profile_path
@@ -31,6 +35,10 @@ const fetchMovie = gql`
         title
         release_date
         poster
+      }
+      videos(filter: { site: "YouTube", type: Trailer }) {
+        name
+        key
       }
     }
   }
@@ -50,7 +58,8 @@ export const Movie = ({ match: { params: { id } } }) => (
           backdrop,
           crew,
           cast,
-          similar
+          similar,
+          videos
         } = movie
 
         return (
@@ -72,6 +81,42 @@ export const Movie = ({ match: { params: { id } } }) => (
                         </Link>
                         <span>{` (${format(release_date, `YYYY`)})`}</span>
                       </div>
+                      <div className="actions">
+                        {videos.length && (
+                          <Modal>
+                            {(isOpen, onOpen, onClose, onDialogClick) => (
+                              <div className="trailer">
+                                <button onClick={onOpen}>
+                                  <FontAwesomeIcon icon={faPlay} size="1x" />
+                                  {` Play Trailer`}
+                                </button>
+                                <aside
+                                  className={`modal ${isOpen ? `open` : ``}`}
+                                  onClick={onClose}
+                                >
+                                  <div
+                                    className="dialog"
+                                    onClick={onDialogClick}
+                                  >
+                                    <div className="header">
+                                      <h1>{videos[0].name}</h1>
+                                      <button type="button" onClick={onClose}>
+                                        <FontAwesomeIcon
+                                          icon={faTimes}
+                                          size="1x"
+                                        />
+                                      </button>
+                                    </div>
+                                    {isOpen && (
+                                      <YouTube videoId={videos[0].key} />
+                                    )}
+                                  </div>
+                                </aside>
+                              </div>
+                            )}
+                          </Modal>
+                        )}
+                      </div>
                       <div className="overview">
                         <h2>Overview</h2>
                         <p>{overview}</p>
@@ -79,9 +124,11 @@ export const Movie = ({ match: { params: { id } } }) => (
                       <div className="crew">
                         <h2>Featured Crew</h2>
                         <ul>
-                          {crew.map(({ name, job }) => (
+                          {crew.map(({ id: crewId, name, job }) => (
                             <li>
-                              <strong>{name}</strong>
+                              <Link to={`/person/${crewId}`}>
+                                <strong>{name}</strong>
+                              </Link>
                               <span>{job.join(`, `)}</span>
                             </li>
                           ))}
@@ -96,11 +143,12 @@ export const Movie = ({ match: { params: { id } } }) => (
               <div className="cast">
                 <h1>Top Billed Cast</h1>
                 <ul>
-                  {cast.map(({ profile_path, name, character }) => (
+                  {cast.map(({ id: personId, profile_path, name, character }) => (
                     <PortraitCard
                       img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${profile_path}`}
                       name={name}
                       description={character}
+                      link={`/person/${personId}`}
                     />
                   ))}
                 </ul>
