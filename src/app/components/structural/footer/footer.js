@@ -11,7 +11,8 @@ export const Footer = () => (
           <Link href="https://www.themoviedb.org/" external>
             The Mini Movie DB
           </Link>
-        </strong>{` `}
+        </strong>
+        {` `}
         powered by{` `}
         <strong>
           <Link
@@ -24,13 +25,14 @@ export const Footer = () => (
           >
             Preact
           </Link>
-        </strong>{` `}
+        </strong>
+        {` `}
         and{` `}
         <strong>
           <Link
             href={
               dev
-                ? `https://y1bhafunj0.execute-api.us-west-2.amazonaws.com/dev/graphql`
+                ? `https://y1bhafunj0.execute-api.us-west-2.amazonaws.com/dev/playground`
                 : `https://zfphsew08j.execute-api.us-west-2.amazonaws.com/production/playground`
             }
             external
