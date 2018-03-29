@@ -26,7 +26,7 @@ after_script:
   - greenkeeper-lockfile-upload
 
 after_success:
-  - yarn coverage
+  - test:coverage
 
 deploy:
   # deploy develop to the staging environment
