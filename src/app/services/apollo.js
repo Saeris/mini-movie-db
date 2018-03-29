@@ -9,7 +9,7 @@ export const client = new ApolloClient({
     ? `http://localhost:1337/graphql`
     : dev
       ? `https://y1bhafunj0.execute-api.us-west-2.amazonaws.com/dev/graphql`
-      : `https://zfphsew08j.execute-api.us-west-2.amazonaws.com/production/playground`,
+      : `https://zfphsew08j.execute-api.us-west-2.amazonaws.com/production/graphql`,
   clientState: {
     defaults: {
       searchQuery: false,
