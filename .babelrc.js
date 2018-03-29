@@ -1,14 +1,4 @@
-{
-  "presets": [
-    "latest",
-    "stage-1"
-  ],
-  "plugins": [
-    "transform-object-assign",
-    "transform-decorators-legacy",
-    ["transform-react-jsx", { "pragma": "h" }],
-    ["jsx-pragmatic", { "module": "preact", "export": "h", "import": "h" }]
-  ],
+module.exports = {
   "env": {
     "test": {
       "sourceMaps": "inline",

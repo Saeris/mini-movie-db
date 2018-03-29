@@ -3,9 +3,7 @@ node_js:
   - "node"
   - "8"
 
-cache:
-  directories:
-    - node_modules
+cache: yarn
 
 branches:
   only:
@@ -14,6 +12,7 @@ branches:
   - /^greenkeeper/.*$/
 
 before_install:
+  - yarn global add serverless
   - yarn global add greenkeeper-lockfile@1
 
 install:
@@ -27,16 +26,18 @@ after_script:
   - greenkeeper-lockfile-upload
 
 after_success:
-  - yarn coverage
+  - test:coverage
 
 deploy:
   # deploy develop to the staging environment
   - provider: script
-    script: yarn deploy:dev
+    skip_cleanup: true
+    script: yarn deploy:prod
     on:
       branch: develop
   # deploy master to production
   - provider: script
+    skip_cleanup: true
     script: yarn deploy:prod
     on:
       branch: master
