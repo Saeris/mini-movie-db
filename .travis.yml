@@ -13,7 +13,6 @@ branches:
   - master
 
 before_install:
-  - yarn global add serverless
   - yarn global add greenkeeper-lockfile@1
 
 install:
@@ -32,11 +31,17 @@ after_success:
 deploy:
   # deploy develop to the staging environment
   - provider: script
-    script: yarn deploy:dev
+    script:
+      - yarn global add serverless
+      - yarn
+      - yarn deploy:prod
     on:
       branch: develop
   # deploy master to production
   - provider: script
-    script: yarn deploy:prod
+    script:
+      - yarn global add serverless
+      - yarn
+      - yarn deploy:prod
     on:
       branch: master
