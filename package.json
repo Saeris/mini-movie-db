@@ -1,5 +1,5 @@
 {
-  "name": "the-mini-movie-db",
+  "name": "mini-movie-db",
   "version": "1.0.0",
   "author": "Drake Costa <drake@saeris.io> (http://saeris.github.io/)",
   "description": "A simple clone of The Movie DB built with Preact + Apollo.",
