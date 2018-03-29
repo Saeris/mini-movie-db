@@ -1,5 +1,7 @@
 # The Mini Movie DB
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Saeris/mini-movie-db.svg)](https://greenkeeper.io/)
+
 ## What is this?
 
 The Mini Movie DB is a simple clone of The Movie DB built with Preact and GraphQL. It's an example application which runs inside of CodeSandbox with a back-end built to deploy to AWS Lambda.
