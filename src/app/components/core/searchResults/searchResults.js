@@ -1,7 +1,7 @@
 import { Query, graphql } from "react-apollo"
+import gql from "graphql-tag"
 import { Loading, OnError } from "../../structural"
 import { PosterCard } from "../"
-import gql from "graphql-tag"
 import "./searchResults.scss"
 
 const searchState = gql`
