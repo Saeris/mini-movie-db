@@ -11,6 +11,7 @@ branches:
   only:
   - develop
   - master
+  - /^greenkeeper/.*$/
 
 before_install:
   - yarn global add greenkeeper-lockfile@1
