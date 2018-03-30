@@ -5,8 +5,11 @@ import { ModalOverlay } from "./modalOverlay"
 import { OpenModal } from "./openModal"
 
 export class Modal extends Component {
-  state = {
-    isOpen: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      isOpen: props.isOpen
+    }
   }
 
   onOpen = () => {
