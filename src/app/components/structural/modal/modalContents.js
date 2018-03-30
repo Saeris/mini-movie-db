@@ -1,3 +1,5 @@
+import "./modalContents.scss"
+
 export const ModalContents = ({
   onDialogClick,
   className,

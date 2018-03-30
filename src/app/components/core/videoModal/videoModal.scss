@@ -1,0 +1,45 @@
+.modal {
+  .dialog {
+    .header {
+      display: flex;
+      flex: 0 0 auto;
+      justify-content: space-between;
+      width: 100%;
+      height: 5rem;
+      padding: 1.6rem;
+
+      h1 {
+        padding: 0;
+        margin: 0;
+        font: {
+          size: 1.6rem;
+          weight: 700;
+        }
+      }
+
+      button {
+        color: #fff;
+        cursor: pointer;
+
+        &:hover {
+          color: #00d573;
+        }
+      }
+    }
+
+    span {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+
+      > iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

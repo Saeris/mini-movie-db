@@ -1,3 +1,5 @@
+import "./modalOverlay.scss"
+
 export const ModalOverlay = ({
   isOpen,
   onClose,

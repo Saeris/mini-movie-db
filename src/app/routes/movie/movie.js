@@ -2,10 +2,7 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import format from "date-fns/format"
 import { Link } from "react-router-dom"
-import FontAwesomeIcon from "@fortawesome/react-fontawesome"
-import { faPlay, faTimes } from "@fortawesome/fontawesome-free-solid"
-import YouTube from "react-youtube"
-import { Overlay, PortraitCard } from "../../components/core"
+import { Overlay, PortraitCard, VideoModal } from "../../components/core"
 import { Loading, Layout, Modal, OnError } from "../../components/structural"
 import "./movie.scss"
 
@@ -83,38 +80,11 @@ export const Movie = ({ match: { params: { id } } }) => (
                       </div>
                       <div className="actions">
                         {videos.length && (
-                          <Modal>
-                            {({
-                              isOpen,
-                              CloseModal,
-                              ModalContents,
-                              ModalOverlay,
-                              OpenModal
-                            }) => (
-                              <div className="trailer">
-                                <OpenModal>
-                                  <FontAwesomeIcon icon={faPlay} size="1x" />
-                                  {` Play Trailer`}
-                                </OpenModal>
-                                <ModalOverlay>
-                                  <ModalContents>
-                                    <div className="header">
-                                      <h1>{videos[0].name}</h1>
-                                      <CloseModal>
-                                        <FontAwesomeIcon
-                                          icon={faTimes}
-                                          size="1x"
-                                        />
-                                      </CloseModal>
-                                    </div>
-                                    {isOpen && (
-                                      <YouTube videoId={videos[0].key} />
-                                    )}
-                                  </ModalContents>
-                                </ModalOverlay>
-                              </div>
-                            )}
-                          </Modal>
+                          <VideoModal
+                            id={videos[0].key}
+                            title={videos[0].name}
+                            buttonText="Play Trailer"
+                          />
                         )}
                       </div>
                       <div className="overview">

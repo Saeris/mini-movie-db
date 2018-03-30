@@ -34,10 +34,12 @@ deploy:
     skip_cleanup: true
     script: yarn deploy:prod
     on:
+      node: "node"
       branch: develop
   # deploy master to production
   - provider: script
     skip_cleanup: true
     script: yarn deploy:prod
     on:
+      node: "node"
       branch: master
