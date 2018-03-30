@@ -84,34 +84,34 @@ export const Movie = ({ match: { params: { id } } }) => (
                       <div className="actions">
                         {videos.length && (
                           <Modal>
-                            {(isOpen, onOpen, onClose, onDialogClick) => (
+                            {({
+                              isOpen,
+                              CloseModal,
+                              ModalContents,
+                              ModalOverlay,
+                              OpenModal
+                            }) => (
                               <div className="trailer">
-                                <button onClick={onOpen}>
+                                <OpenModal>
                                   <FontAwesomeIcon icon={faPlay} size="1x" />
                                   {` Play Trailer`}
-                                </button>
-                                <aside
-                                  className={`modal ${isOpen ? `open` : ``}`}
-                                  onClick={onClose}
-                                >
-                                  <div
-                                    className="dialog"
-                                    onClick={onDialogClick}
-                                  >
+                                </OpenModal>
+                                <ModalOverlay>
+                                  <ModalContents>
                                     <div className="header">
                                       <h1>{videos[0].name}</h1>
-                                      <button type="button" onClick={onClose}>
+                                      <CloseModal>
                                         <FontAwesomeIcon
                                           icon={faTimes}
                                           size="1x"
                                         />
-                                      </button>
+                                      </CloseModal>
                                     </div>
                                     {isOpen && (
                                       <YouTube videoId={videos[0].key} />
                                     )}
-                                  </div>
-                                </aside>
+                                  </ModalContents>
+                                </ModalOverlay>
                               </div>
                             )}
                           </Modal>
@@ -143,14 +143,16 @@ export const Movie = ({ match: { params: { id } } }) => (
               <div className="cast">
                 <h1>Top Billed Cast</h1>
                 <ul>
-                  {cast.map(({ id: personId, profile_path, name, character }) => (
-                    <PortraitCard
-                      img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${profile_path}`}
-                      name={name}
-                      description={character}
-                      link={`/person/${personId}`}
-                    />
-                  ))}
+                  {cast.map(
+                    ({ id: personId, profile_path, name, character }) => (
+                      <PortraitCard
+                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${profile_path}`}
+                        name={name}
+                        description={character}
+                        link={`/person/${personId}`}
+                      />
+                    )
+                  )}
                 </ul>
               </div>
               <div className="cast">

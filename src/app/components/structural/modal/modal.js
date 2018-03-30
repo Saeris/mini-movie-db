@@ -1,4 +1,8 @@
 import { Component } from "preact"
+import { CloseModal } from "./closeModal"
+import { ModalContents } from "./modalContents"
+import { ModalOverlay } from "./modalOverlay"
+import { OpenModal } from "./openModal"
 
 export class Modal extends Component {
   state = {
@@ -40,6 +44,31 @@ export class Modal extends Component {
   }
 
   render({ children }, { isOpen }) {
-    return children[0](isOpen, this.onOpen, this.onClose, this.onDialogClick)
+    return children[0]({
+      isOpen,
+      onOpen: this.onOpen,
+      onClose: this.onClose,
+      onDialogClick: this.onDialogClick,
+      CloseModal: ({ children, ...props }) => (
+        <CloseModal {...props} onClose={this.onClose}>
+          {children}
+        </CloseModal>
+      ),
+      ModalContents: ({ children, ...props }) => (
+        <ModalContents {...props} onDialogClick={this.onDialogClick}>
+          {children}
+        </ModalContents>
+      ),
+      ModalOverlay: ({ children, ...props }) => (
+        <ModalOverlay {...props} isOpen={isOpen} onClose={this.onClose}>
+          {children}
+        </ModalOverlay>
+      ),
+      OpenModal: ({ children, ...props }) => (
+        <OpenModal {...props} onOpen={this.onOpen}>
+          {children}
+        </OpenModal>
+      )
+    })
   }
 }
