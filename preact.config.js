@@ -1,4 +1,4 @@
-const { join, resolve } = require(`path`) // eslint-disable-line
+import { join } from "path"
 import CopyWebpackPlugin from "copy-webpack-plugin"
 import MinifyPlugin from "babel-minify-webpack-plugin"
 
