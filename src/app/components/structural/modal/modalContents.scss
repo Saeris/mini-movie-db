@@ -1,0 +1,12 @@
+.modal {
+  .dialog {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 100rem;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
