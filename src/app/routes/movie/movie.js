@@ -3,7 +3,7 @@ import gql from "graphql-tag"
 import format from "date-fns/format"
 import { Link } from "react-router-dom"
 import { Overlay, PortraitCard, VideoModal } from "../../components/core"
-import { Loading, Layout, Modal, OnError } from "../../components/structural"
+import { Loading, Layout, OnError } from "../../components/structural"
 import "./movie.scss"
 
 const fetchMovie = gql`
@@ -81,8 +81,8 @@ export const Movie = ({ match: { params: { id } } }) => (
                       <div className="actions">
                         {videos.length && (
                           <VideoModal
-                            id={videos[0].key}
-                            title={videos[0].name}
+                            videoId={videos[0].key}
+                            name={videos[0].name}
                             buttonText="Play Trailer"
                           />
                         )}

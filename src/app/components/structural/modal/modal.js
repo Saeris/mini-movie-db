@@ -1,8 +1,5 @@
 import { Component } from "preact"
-import { CloseModal } from "./closeModal"
-import { ModalContents } from "./modalContents"
-import { ModalOverlay } from "./modalOverlay"
-import { OpenModal } from "./openModal"
+import "./modal.scss"
 
 export class Modal extends Component {
   constructor(props) {
@@ -29,17 +26,17 @@ export class Modal extends Component {
   }
 
   listenKeyboard = event => {
-    if (event.key === "Escape" || event.keyCode === 27) {
+    if (event.key === `Escape` || event.keyCode === 27) {
       this.onClose()
     }
   }
 
   componentDidMount = () => {
-    window.addEventListener("keydown", this.listenKeyboard.bind(this), true)
+    window.addEventListener(`keydown`, this.listenKeyboard.bind(this), true)
   }
 
   componentWillUnmount = () => {
-    window.removeEventListener("keydown", this.listenKeyboard.bind(this), true)
+    window.removeEventListener(`keydown`, this.listenKeyboard.bind(this), true)
   }
 
   onDialogClick = event => {
@@ -52,25 +49,27 @@ export class Modal extends Component {
       onOpen: this.onOpen,
       onClose: this.onClose,
       onDialogClick: this.onDialogClick,
-      CloseModal: ({ children, ...props }) => (
-        <CloseModal {...props} onClose={this.onClose}>
-          {children}
-        </CloseModal>
+      CloseModal: props => (
+        <button type="button" onClick={this.onClose} {...props} />
       ),
-      ModalContents: ({ children, ...props }) => (
-        <ModalContents {...props} onDialogClick={this.onDialogClick}>
-          {children}
-        </ModalContents>
+      ModalContent: ({ className, ...props }) => (
+        <section
+          onClick={this.onDialogClick}
+          {...props}
+          className={`${className ? `${className} ` : ``}dialog`}
+        />
       ),
-      ModalOverlay: ({ children, ...props }) => (
-        <ModalOverlay {...props} isOpen={isOpen} onClose={this.onClose}>
-          {children}
-        </ModalOverlay>
+      ModalOverlay: ({ className, ...props }) => (
+        <aside
+          onClick={this.onClose}
+          {...props}
+          className={`${className ? `${className} ` : ``}modal ${
+            isOpen ? `open` : ``
+          }`}
+        />
       ),
-      OpenModal: ({ children, ...props }) => (
-        <OpenModal {...props} onOpen={this.onOpen}>
-          {children}
-        </OpenModal>
+      OpenModal: props => (
+        <button type="button" onClick={this.onOpen} {...props} />
       )
     })
   }
