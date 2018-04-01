@@ -1,6 +1,6 @@
 {
   "name": "mini-movie-db",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Drake Costa <drake@saeris.io> (http://saeris.github.io/)",
   "description": "A simple clone of The Movie DB built with Preact + Apollo.",
   "private": false,
@@ -18,7 +18,7 @@
     "start:api": "serverless offline start --dontPrintOutput",
     "start:client": "preact watch --template public/template.html",
     "build": "npm-run-all --parallel build:client",
-    "build:client": "preact build --no-prerender --template public/template.html",
+    "build:client": "preact build --no-prerender --config preact.config.js --template public/template.html",
     "deploy:dev": "cross-env NODE_ENV=development serverless --stage=dev deploy",
     "deploy:prod": "cross-env NODE_ENV=production serverless --stage=production deploy",
     "test": "cross-env BABEL_ENV=test nyc ava --verbose --color --tap",

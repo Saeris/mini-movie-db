@@ -28,6 +28,18 @@ export default (config, env, helpers) => {
       undefinedToVoid: true
     }, { sourceMap: null }))
   }
+  const { rule: { options: babelConfig } } = helpers.getLoadersByName(config, `babel-loader`)[0]
+  babelConfig.plugins = [
+    require.resolve(`babel-plugin-syntax-dynamic-import`),
+    require.resolve(`babel-plugin-transform-object-assign`),
+    require.resolve(`babel-plugin-transform-decorators-legacy`),
+    require.resolve(`babel-plugin-transform-class-properties`),
+    require.resolve(`babel-plugin-transform-export-extensions`),
+    require.resolve(`babel-plugin-transform-object-rest-spread`),
+    env.isProd && require.resolve(`babel-plugin-transform-react-remove-prop-types`),
+    [require.resolve(`babel-plugin-transform-react-jsx`), { pragma: `h` }],
+    [require.resolve(`babel-plugin-jsx-pragmatic`), { "module": `preact`, "export": `h`, "import": `h` }]
+  ].filter(Boolean)
   config.plugins.push(new CopyWebpackPlugin([
     { from: join(pubDir, `_redirects`) },
     //{ from: join(pubDir, `favicon.ico`), to: `favicon.ico` },
