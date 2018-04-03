@@ -1,11 +1,14 @@
 import { graphqlHapi } from "apollo-server-hapi" // https://github.com/apollographql/apollo-server
 // https://www.howtographql.com/advanced/4-security/
 import { info, warn } from "winston"
+import { deflate } from "graphql-deduplicator"
 import { formatError } from "./utilities"
 import { schema } from "./schema"
 
 if (typeof process.env.apikey === `undefined`) {
-  warn(`WARNING: process.env.apikey is not defined. Check README.md for more information`) // eslint-disable-line
+  warn(
+    `WARNING: process.env.apikey is not defined. Check README.md for more information`
+  ) // eslint-disable-line
 }
 
 export default {
@@ -21,6 +24,10 @@ export default {
         },
         root_value: schema,
         formatError,
+        formatResponse: response =>
+          response.data && !response.data.__schema
+            ? deflate(response.data)
+            : response,
         tracing: true,
         debug: true
       }
