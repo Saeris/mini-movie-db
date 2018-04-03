@@ -10,19 +10,15 @@ export class Modal extends Component {
   }
 
   onOpen = () => {
-    if (!this.state.isOpen) {
-      this.setState({
-        isOpen: true
-      })
-    }
+    this.setState(({ isOpen }) => ({
+      isOpen: !isOpen && true
+    }))
   }
 
   onClose = () => {
-    if (this.state.isOpen) {
-      this.setState({
-        isOpen: false
-      })
-    }
+    this.setState(({ isOpen }) => ({
+      isOpen: isOpen && false
+    }))
   }
 
   listenKeyboard = event => {
