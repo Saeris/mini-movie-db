@@ -1,29 +1,28 @@
 import hapi from "hapi" // https://hapijs.com/
 import { info, error } from "winston"
 import monitor from "./monitor" // Monitoring and Logging
+//import limiter from "./limiter" // Rate Limiting
 import api from "./api" // GraphQL API Endpoint
 
-const server = new hapi.Server()
-server.connection({ routes: { cors: true } })
+const server = new hapi.Server({ routes: { cors: true } })
 
 const plugins = [
   monitor,
   api
 ]
-let loaded
-server.makeReady = onServerReady => {
+
+async function setup() {
   info(`Setting up server...`)
   try {
-    if (!loaded) { // eslint-disable-line
-      server.register(plugins, onServerReady)
-      loaded = true
-    } else {
-      onServerReady()
-    }
+    await server.register(plugins)
     info(`Successfully setup server!`)
   } catch (err) {
     error(`Failed to setup server:`, err)
   }
 }
+
+let loaded = !module.parent
+
+if (loaded) setup()
 
 export default server

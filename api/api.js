@@ -9,7 +9,7 @@ if (typeof process.env.apikey === `undefined`) {
 }
 
 export default {
-  register: graphqlHapi,
+  plugin: graphqlHapi,
   options: {
     path: `/graphql`,
     graphqlOptions: ({ payload }) => {

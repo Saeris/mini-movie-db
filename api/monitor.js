@@ -22,7 +22,7 @@ const goodWinstonStream = new GoodWinston({
 })
 
 export default {
-  register: good,
+  plugin: good,
   options: {
     ops: false,
     reporters: {
