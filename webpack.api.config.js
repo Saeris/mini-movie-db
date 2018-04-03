@@ -35,7 +35,7 @@ module.exports = {
           babelrc: false,
           plugins: [require(`@babel/plugin-transform-runtime`)],
           presets: [
-            [require(`@babel/preset-env`), { targets: { node: `6.10` } }],
+            [require(`@babel/preset-env`), { targets: { node: `8.10` } }],
             require(`@babel/preset-stage-0`)
           ]
         }
