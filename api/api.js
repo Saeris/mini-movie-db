@@ -15,7 +15,7 @@ export default {
   plugin: graphqlHapi,
   options: {
     path: `/graphql`,
-    graphqlOptions: ({ payload }) => {
+    graphqlOptions: ({ headers, payload }) => {
       info(`Received query:`, payload)
       return {
         schema,
@@ -24,10 +24,9 @@ export default {
         },
         root_value: schema,
         formatError,
-        formatResponse: response =>
-          response.data && !response.data.__schema
-            ? deflate(response.data)
-            : response,
+        formatResponse: response => ((headers[`X-GraphQL-Deduplicate`] && response.data && !response.data.__schema)
+          ? deflate(response.data)
+          : response),
         tracing: true,
         debug: true
       }

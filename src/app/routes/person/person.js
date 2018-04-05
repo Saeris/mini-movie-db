@@ -12,16 +12,18 @@ const fetchPerson = gql`
       id
       name
       biography
-      profile_path
+      photo
       appearsIn(limit: 6) {
         id
         title
         poster
+        releaseDate
       }
       workedOn(limit: 6) {
         id
         title
         poster
+        releaseDate
       }
     }
   }
@@ -32,11 +34,11 @@ export const Person = ({ match: { params: { id } } }) => (
     <Query query={fetchPerson} variables={{ id }}>
       {({ loading, error, data: { person } }) => {
         if (loading) return <Loading />
-        if (error) return <OnError />
+        if (error) return <OnError errMsg={error} />
         const {
           name,
           biography,
-          profile_path,
+          photo,
           appearsIn,
           workedOn
         } = person
@@ -48,17 +50,17 @@ export const Person = ({ match: { params: { id } } }) => (
                 <div className="summary">
                   <div className="poster">
                     <img
-                      src={`//image.tmdb.org/t/p/w300/${profile_path}`}
+                      src={`//image.tmdb.org/t/p/w300/${photo}`}
                       alt={name}
                     />
                   </div>
                   <div className="info">
-                    <div className="title">
+                    <div className="name">
                       <Link to={`/person/${id}`}>
                         <h1>{name}</h1>
                       </Link>
                     </div>
-                    <div className="overview">
+                    <div className="biography">
                       <h2>Biography</h2>
                       <p>{biography}</p>
                     </div>
@@ -71,11 +73,11 @@ export const Person = ({ match: { params: { id } } }) => (
                 <h1>Worked On</h1>
                 <ul>
                   {workedOn.map(
-                    ({ id: similarId, poster, title, release_date }) => (
+                    ({ id: similarId, poster, title, releaseDate }) => (
                       <PortraitCard
                         img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${poster}`}
                         name={title}
-                        description={format(release_date, `MMMM D, YYYY`)}
+                        description={format(releaseDate, `MMMM D, YYYY`)}
                         link={`/movies/${similarId}`}
                       />
                     )
@@ -86,11 +88,11 @@ export const Person = ({ match: { params: { id } } }) => (
                 <h1>Appears In</h1>
                 <ul>
                   {appearsIn.map(
-                    ({ id: similarId, poster, title, release_date }) => (
+                    ({ id: similarId, poster, title, releaseDate }) => (
                       <PortraitCard
                         img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${poster}`}
                         name={title}
-                        description={format(release_date, `MMMM D, YYYY`)}
+                        description={format(releaseDate, `MMMM D, YYYY`)}
                         link={`/movies/${similarId}`}
                       />
                     )

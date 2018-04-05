@@ -8,7 +8,7 @@ provider:
   stage: dev
   region: us-west-2
   environment:
-    apikey: ${file(./serverless.env.yml):movieDBApiKey}
+    apikey: ${file(./serverless.env.yml):movieDBApiKey, ""}
     stage: ${opt:stage, ""}
 
 plugins:

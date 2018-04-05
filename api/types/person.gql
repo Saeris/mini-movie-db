@@ -1,0 +1,8 @@
+type Person {
+  id: ID!
+  name: String!
+  biography: String!
+  photo: Photo!
+  workedOn(limit: Int): [Movie!]!
+  appearsIn(limit: Int): [Movie!]!
+}

@@ -12,26 +12,33 @@ const fetchMovie = gql`
       id
       title
       overview
-      release_date
-      poster
-      backdrop
+      releaseDate
+      poster {
+        custom(dimensions: "w300")
+      }
+      backdrop {
+        custom(dimensions: "w1400_and_h450_face")
+      }
       cast(limit: 6) {
         id
         name
         character
-        profile_path
+        photo {
+          custom(dimensions: "w150_and_h225_bestv2")
+        }
       }
       crew(limit: 6) {
         id
         name
         job
-        profile_path
       }
       similar(limit: 6) {
         id
         title
-        release_date
-        poster
+        releaseDate
+        poster {
+          custom(dimensions: "w150_and_h225_bestv2")
+        }
       }
       videos(filter: { site: "YouTube", type: Trailer }) {
         name
@@ -46,11 +53,11 @@ export const Movie = ({ match: { params: { id } } }) => (
     <Query query={fetchMovie} variables={{ id }}>
       {({ loading, error, data: { movie } }) => {
         if (loading) return <Loading />
-        if (error) return <OnError />
+        if (error) return <OnError errMsg={error} />
         const {
           title,
           overview,
-          release_date,
+          releaseDate,
           poster,
           backdrop,
           crew,
@@ -62,12 +69,12 @@ export const Movie = ({ match: { params: { id } } }) => (
         return (
           <div className="fullWidth">
             <section id="highlights">
-              <Overlay bg={backdrop}>
+              <Overlay bg={backdrop.custom}>
                 <div className="container">
                   <div className="summary">
                     <div className="poster">
                       <img
-                        src={`//image.tmdb.org/t/p/w300/${poster}`}
+                        src={poster.custom}
                         alt={title}
                       />
                     </div>
@@ -76,7 +83,7 @@ export const Movie = ({ match: { params: { id } } }) => (
                         <Link to={`/movies/${id}`}>
                           <h1>{title}</h1>
                         </Link>
-                        <span>{` (${format(release_date, `YYYY`)})`}</span>
+                        <span>{` (${format(releaseDate, `YYYY`)})`}</span>
                       </div>
                       <div className="actions">
                         {videos.length && (
@@ -94,12 +101,12 @@ export const Movie = ({ match: { params: { id } } }) => (
                       <div className="crew">
                         <h2>Featured Crew</h2>
                         <ul>
-                          {crew.map(({ id: crewId, name, job }) => (
+                          {crew.map(({ id: creditId, name, job }) => (
                             <li>
-                              <Link to={`/person/${crewId}`}>
+                              <Link to={`/person/${creditId}`}>
                                 <strong>{name}</strong>
                               </Link>
-                              <span>{job.join(`, `)}</span>
+                              <span>{job.map(hash => Object.values(hash).join(``)).join(`, `)}</span>
                             </li>
                           ))}
                         </ul>
@@ -114,9 +121,9 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <h1>Top Billed Cast</h1>
                 <ul>
                   {cast.map(
-                    ({ id: personId, profile_path, name, character }) => (
+                    ({ id: personId, photo: { custom }, name, character }) => (
                       <PortraitCard
-                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${profile_path}`}
+                        img={custom}
                         name={name}
                         description={character}
                         link={`/person/${personId}`}
@@ -129,11 +136,11 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <h1>Similar Movies</h1>
                 <ul>
                   {similar.map(
-                    ({ id: similarId, poster, title, release_date }) => (
+                    ({ id: similarId, poster: { custom }, title, releaseDate }) => (
                       <PortraitCard
-                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${poster}`}
+                        img={custom}
                         name={title}
-                        description={format(release_date, `MMMM D, YYYY`)}
+                        description={format(releaseDate, `MMMM D, YYYY`)}
                         link={`/movies/${similarId}`}
                       />
                     )

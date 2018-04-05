@@ -1,0 +1,8 @@
+enum ReleaseStatus {
+  Rumored
+  Planned
+  Production
+  Post
+  Released
+  Canceled
+}

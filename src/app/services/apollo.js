@@ -14,25 +14,35 @@ const dev = process.env.NODE_ENV === `development`
 
 export const client = new ApolloClient({
   link: ApolloLink.from([
-    new RetryLink(),
-    new ApolloLink((operation, forward) =>
-      forward(operation).map(response => inflate(response))
-    ),
+    //new RetryLink(),
+    new ApolloLink((operation, forward) => forward(operation).map(response => inflate(response))),
     new BatchHttpLink({
+      credentials: `include`,
       uri:
         local && dev
           ? `http://localhost:1337/graphql`
           : dev
             ? `https://y1bhafunj0.execute-api.us-west-2.amazonaws.com/dev/graphql`
-            : `https://zfphsew08j.execute-api.us-west-2.amazonaws.com/production/graphql`
+            : `https://zfphsew08j.execute-api.us-west-2.amazonaws.com/production/graphql`,
+      headers: {
+        'X-GraphQL-Deduplicate': true
+      }
     })
   ]),
   cache: new InMemoryCache({
     dataIdFromObject: o => o.id
   }),
-  connectToDevTools: true,
+  connectToDevTools: dev,
   clientState: {
     defaults: {},
     resolvers: {}
+  },
+  defaultOptions: {
+    query: {
+      errorPolicy: `all`
+    },
+    mutation: {
+      errorPolicy: `all`
+    }
   }
 })

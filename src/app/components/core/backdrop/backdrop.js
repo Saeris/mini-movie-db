@@ -54,9 +54,7 @@ export class Overlay extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bg: props.bg
-        ? `//image.tmdb.org/t/p/w1400_and_h450_face/${props.bg}`
-        : null,
+      bg: props.bg ? props.bg : null,
       color: [8, 28, 37]
     }
   }

@@ -1,10 +1,7 @@
-import endpoints from "./endpoints"
+import * as endpoints from "./endpoints"
 import { cachedQuery } from "../utilities"
 
-export const movie = async (root, { id }, { apikey }) => {
-  const results = await cachedQuery({ apikey, endpoint: endpoints.movie(id) })
-  return results
-}
+export const movie = (root, { id }, { apikey }) => cachedQuery({ apikey, endpoint: endpoints.movie(id) })
 
 export const popular = async (root, { page = 1 }, { apikey }) => {
   const { results } = await cachedQuery({ apikey, endpoint: endpoints.popularMovies, options: { page } })
@@ -18,7 +15,4 @@ export const search = async (root, { query: input, page }, { apikey }) => {
   return movies
 }
 
-export const person = async (root, { id }, { apikey }) => {
-  const results = await cachedQuery({ apikey, endpoint: endpoints.person(id) })
-  return results
-}
+export const person = (root, { id }, { apikey }) => cachedQuery({ apikey, endpoint: endpoints.person(id) })

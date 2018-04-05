@@ -5,23 +5,25 @@
   "description": "A simple clone of The Movie DB built with Preact + Apollo.",
   "private": false,
   "license": "MIT",
-  "keywords": ["preact", "the movie db", "apollo", "graphql", "saeris.io"],
+  "keywords": [
+    "preact",
+    "the movie db",
+    "apollo",
+    "graphql",
+    "saeris.io"
+  ],
   "scripts": {
     "dev": "npm-run-all --parallel start:api start:client playground",
     "start": "npm-run-all --parallel start:api start:client",
     "start:api": "serverless offline start --dontPrintOutput",
     "start:client": "preact watch --template public/template.html",
     "build": "npm-run-all --parallel build:client",
-    "build:client":
-      "preact build --no-prerender --config preact.config.js --template public/template.html",
-    "deploy:dev":
-      "cross-env NODE_ENV=development serverless --stage=dev deploy",
-    "deploy:prod":
-      "cross-env NODE_ENV=production serverless --stage=production deploy",
+    "build:client": "preact build --no-prerender --config preact.config.js --template public/template.html",
+    "deploy:dev": "cross-env NODE_ENV=development serverless --stage=dev deploy",
+    "deploy:prod": "cross-env NODE_ENV=production serverless --stage=production deploy",
     "test": "cross-env BABEL_ENV=test nyc ava --verbose --color --tap",
     "test:watch": "cross-env BABEL_ENV=test ava --watch",
-    "test:coverage":
-      "cross-env BABEL_ENV=test nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "test:coverage": "cross-env BABEL_ENV=test nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "test:report": "cross-env BABEL_ENV=test nyc report --color",
     "playground": "graphql playground",
     "precommit": "lint-staged",
@@ -35,13 +37,13 @@
     "@fortawesome/fontawesome": "^1.1.5",
     "@fortawesome/fontawesome-free-solid": "^5.0.9",
     "@fortawesome/react-fontawesome": "^0.0.18",
-    "apollo-link-state": "0.4.1",
-    "apollo-link-retry": "2.2.2",
-    "apollo-link-error": "1.0.7",
-    "apollo-link-batch-http": "1.2.1",
-    "apollo-link": "1.2.1",
-    "apollo-client": "2.2.8",
     "apollo-cache-inmemory": "1.1.12",
+    "apollo-client": "2.2.8",
+    "apollo-link": "1.2.1",
+    "apollo-link-batch-http": "1.2.1",
+    "apollo-link-error": "1.0.7",
+    "apollo-link-retry": "2.2.2",
+    "apollo-link-state": "0.4.1",
     "apollo-server-hapi": "^1.3.4",
     "aws-lambda": "^0.1.2",
     "babel-preset-env": "1.6.1",
@@ -68,7 +70,7 @@
     "react-clamp-lines": "^1.1.0",
     "react-router": "^4.2.0",
     "react-router-dom": "4.2.2",
-    "react-spinners": "0.2.6",
+    "react-spinners": "^0.3.1",
     "react-youtube": "7.5.0",
     "regenerator-runtime": "0.11.1",
     "styled-components": "^3.2.5",
@@ -118,7 +120,7 @@
     "serverless-webpack": "^5.0.0",
     "snyk": "^1.42.6",
     "stylelint": "^9.1.1",
-    "stylelint-no-unsupported-browser-features": "^2.0.0",
+    "stylelint-no-unsupported-browser-features": "^3.0.0",
     "stylelint-order": "^0.8.1",
     "stylelint-scss": "^3.0.0",
     "tap-nyan": "^1.1.0",
@@ -126,7 +128,11 @@
     "webpack-node-externals": "^1.6.0"
   },
   "greenkeeper": {
-    "ignore": ["hapi", "good", "apollo-server-hapi"]
+    "ignore": [
+      "hapi",
+      "good",
+      "apollo-server-hapi"
+    ]
   },
   "snyk": true,
   "ava": {
@@ -150,6 +156,9 @@
     "failWithoutAssertions": false,
     "tap": "tap-nyan",
     "powerAssert": true,
-    "require": ["esm", "./register.js"]
+    "require": [
+      "esm",
+      "./register.js"
+    ]
   }
 }

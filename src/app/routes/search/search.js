@@ -15,8 +15,10 @@ const searchMovies = gql`
       id
       title
       overview
-      release_date
-      poster
+      releaseDate
+      poster {
+        small
+      }
     }
   }
 `
@@ -26,8 +28,10 @@ const fetchPopular = gql`
       id
       title
       overview
-      release_date
-      poster
+      releaseDate
+      poster {
+        small
+      }
     }
   }
 `
@@ -51,7 +55,7 @@ export default class Search extends Component {
           validationSchema={Yup.object().shape({
             term: Yup.string()
           })}
-          onSubmit={({ term }, { props, setSubmitting, setErrors }) => {
+          onSubmit={({ term }, { setSubmitting, setErrors }) => {
             this.setState({
               query: searchMovies,
               header: `Search Results`,
@@ -104,7 +108,7 @@ export default class Search extends Component {
         <Query query={query} variables={{ page: 1, term }}>
           {({ loading, error, data, fetchMore }) => {
             if (loading) return <Loading />
-            if (error) return <OnError />
+            if (error) return <OnError errMsg={error} />
 
             return (
               <section id="searchresults">
@@ -117,15 +121,15 @@ export default class Search extends Component {
                       variables: { page: page + 1, term },
                       updateQuery: (prev, { fetchMoreResult }) => {
                         this.setState({
-                          page: (page += 1)
+                          page: page + 1
                         })
                         return fetchMoreResult
                           ? {
-                              movies: [
-                                ...prev.movies,
-                                ...fetchMoreResult.movies
-                              ]
-                            }
+                            movies: [
+                              ...prev.movies,
+                              ...fetchMoreResult.movies
+                            ]
+                          }
                           : prev
                       }
                     })

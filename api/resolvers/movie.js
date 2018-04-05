@@ -1,4 +1,4 @@
-import endpoints from "./endpoints"
+import { movieCredits, similarMovies, movieVideos } from "./endpoints"
 import { cachedQuery, filterResults } from "../utilities"
 
 export const status = (parent, args, context) => {
@@ -10,12 +10,12 @@ export const status = (parent, args, context) => {
 }
 
 export const cast = async ({ id }, { limit }, { apikey }) => {
-  const results = await cachedQuery({ apikey, endpoint: endpoints.movieCredits(id) })
+  const results = await cachedQuery({ apikey, endpoint: movieCredits(id) })
   return results.cast.slice(0, limit ? limit : results.cast.length) || []
 }
 
 export const crew = async ({ id }, { limit }, { apikey }) => {
-  const results = await cachedQuery({ apikey, endpoint: endpoints.movieCredits(id) })
+  const results = await cachedQuery({ apikey, endpoint: movieCredits(id) })
   return results.crew.map((member, i, arr) => ({
     ...member,
     job: arr.filter(person => person.id === member.id).map(({ job }) => job)
@@ -25,21 +25,23 @@ export const crew = async ({ id }, { limit }, { apikey }) => {
 }
 
 export const similar = async ({ id }, { limit }, { apikey }) => {
-  const { results } = await cachedQuery({ apikey, endpoint: endpoints.similarMovies(id) })
+  const { results } = await cachedQuery({ apikey, endpoint: similarMovies(id) })
   return results.slice(0, limit ? limit : results.length) || []
 }
 
 export const videos = async ({ id }, { filter }, { apikey }) => {
-  const { results } = await cachedQuery({ apikey, endpoint: endpoints.movieVideos(id) })
+  const { results } = await cachedQuery({ apikey, endpoint: movieVideos(id) })
   return results.filter(filterResults, filter) || []
 }
 
-export const score = parent => parent.vote_average // eslint-disable-line
+export const score = parent => parent.vote_average
 
-export const votes = parent => parent.vote_count // eslint-disable-line
+export const votes = parent => parent.vote_count
 
-export const languages = parent => parent.spoken_languages // eslint-disable-line
+export const languages = parent => parent.spoken_languages
 
-export const poster = parent => parent.poster_path // eslint-disable-line
+export const releaseDate = parent => parent.release_date
 
-export const backdrop = parent => parent.backdrop_path // eslint-disable-line
+export const backdrop = parent => parent.backdrop_path
+
+export const poster = parent => parent.poster_path

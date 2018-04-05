@@ -39,7 +39,8 @@ module.exports = {
             require(`@babel/preset-stage-0`)
           ]
         }
-      }
+      },
+      { test: /\.(graphql|gql)$/, exclude: /node_modules/, loader: `graphql-tag/loader` }
     ]
   }
 }
