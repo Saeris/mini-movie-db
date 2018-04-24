@@ -108,7 +108,7 @@
     "npm-run-all": "^4.1.2",
     "nyc": "^11.2.1",
     "prettier": "^1.7.0",
-    "sass-loader": "^6.0.7",
+    "sass-loader": "^7.0.0",
     "serverless": "^1.26.0",
     "serverless-offline": "^3.15.3",
     "serverless-webpack": "^5.0.0",
