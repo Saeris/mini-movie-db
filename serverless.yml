@@ -12,6 +12,7 @@ provider:
     stage: ${opt:stage, ""}
 
 plugins:
+  - serverless-prune-plugin
   - serverless-webpack
   - serverless-offline
 
@@ -21,6 +22,9 @@ package:
 custom:
   serverless-offline:
     port: 1337
+  prune:
+    automatic: true
+    number: 3
   webpack:
     includeModules: true
     packager: 'yarn'

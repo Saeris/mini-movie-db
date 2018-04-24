@@ -1,7 +1,9 @@
 import { images } from "./endpoints"
+import { traceImg } from "../utilities"
 
 export const file = parent => parent
 export const original = parent => `${images}original${parent}`
+export const originalSVG = parent => traceImg(`${images}original${parent}`)
 export const custom = (parent, { dimensions }) => `${images}${dimensions}${parent}`
 
 export const thumbnail = parent => `${images}w92${parent}`

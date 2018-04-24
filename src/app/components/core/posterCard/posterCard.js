@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
 import format from "date-fns/format"
 import ClampLines from "react-clamp-lines"
+import { Img } from "../img"
 import "./posterCard.scss"
 
 export const PosterCard = ({ id, title, poster, overview, releaseDate }) => (
   <li className="posterCard">
     <div className="poster">
       <Link to={`/movies/${id}`}>
-        <img src={poster.small} alt={title} />
+        <Img src={poster.small} alt={title} />
       </Link>
     </div>
     <div className="info">

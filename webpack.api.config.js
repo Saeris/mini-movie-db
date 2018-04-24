@@ -36,7 +36,7 @@ module.exports = {
           plugins: [require(`@babel/plugin-transform-runtime`)],
           presets: [
             [require(`@babel/preset-env`), { targets: { node: `8.10` } }],
-            require(`@babel/preset-stage-0`)
+            [require(`@babel/preset-stage-0`), { decoratorsLegacy: true }]
           ]
         }
       },
