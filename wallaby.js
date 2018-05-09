@@ -2,6 +2,7 @@ process.env.BABEL_ENV = `test`
 
 module.exports = wallaby => ({
   files: [
+    `jest.config.js`,
     `api/**/*.js`,
     `src/**/*.js`,
     `lib/**/*.js`,
@@ -16,7 +17,7 @@ module.exports = wallaby => ({
     `lib/**/__TEST__/*.spec.js`
   ],
 
-  testFramework: `ava`,
+  testFramework: `jest`,
 
   env: {
     type: `node`,
@@ -26,6 +27,8 @@ module.exports = wallaby => ({
   debug: true,
 
   setup: () => {
+    const jestConfig = require(`./jest.config`)
+    wallaby.testFramework.configure(jestConfig)
     require(`esm`)
     require(`@babel/register`)
     require(`@babel/polyfill`)
