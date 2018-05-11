@@ -19,16 +19,13 @@ install:
 
 before_script:
   - greenkeeper-lockfile-update
-  - yarn test
+  - yarn test:coverage
 
 script:
   - yarn build
 
 after_script:
   - greenkeeper-lockfile-upload
-
-after_success:
-  - yarn test:coverage
 
 deploy:
   # deploy develop to the staging environment

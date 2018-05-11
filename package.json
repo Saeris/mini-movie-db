@@ -23,9 +23,9 @@
     "build:client": "cross-env NODE_ENV=production preact build --no-prerender --config preact.config.js --template public/template.html",
     "deploy:dev": "cross-env NODE_ENV=development serverless --stage=dev deploy",
     "deploy:prod": "cross-env NODE_ENV=production serverless --stage=production deploy",
-    "test": "cross-env NODE_ENV=test jest",
+    "test": "cross-env NODE_ENV=test jest -c ./jest.config.js",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "test:coverage": "cross-env NODE_ENV=test jest && codecov",
+    "test:coverage": "cross-env NODE_ENV=test jest -c ./jest.config.js && codecov",
     "playground": "graphql playground",
     "precommit": "lint-staged",
     "prepublish": "snyk protect"
