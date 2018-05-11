@@ -19,10 +19,13 @@ before_install:
 
 install:
   - yarn
+  - yarn add -D babel-core@7.0.0-0
 
 before_script:
   - greenkeeper-lockfile-update
   - yarn test:coverage
+  - yarn remove babel-core
+  - yarn
 
 script:
   - yarn build
