@@ -19,7 +19,7 @@ before_install:
 
 install:
   - yarn
-  - yarn add -D babel-core@7.0.0-0
+  - yarn add -D babel-core@^7.0.0-0
 
 before_script:
   - greenkeeper-lockfile-update
