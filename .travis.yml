@@ -4,6 +4,9 @@ node_js:
 
 cache: yarn
 
+env:
+- NODE_ENV: test
+
 branches:
   only:
   - develop
