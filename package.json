@@ -63,7 +63,7 @@
     "react-apollo": "^2.1.1",
     "react-clamp-lines": "^1.1.0",
     "react-router": "^4.2.0",
-    "react-router-dom": "4.2.2",
+    "react-router-dom": "4.3.0",
     "react-spinners": "0.2.6",
     "react-youtube": "7.6.0",
     "regenerator-runtime": "0.11.1",
