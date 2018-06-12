@@ -68,7 +68,7 @@
     "react-youtube": "7.6.0",
     "regenerator-runtime": "0.11.1",
     "styled-components": "3.2.6",
-    "winston": "^2.3.1",
+    "winston": "^3.0.0",
     "yup": "0.24.1"
   },
   "devDependencies": {
