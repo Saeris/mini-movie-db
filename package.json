@@ -27,7 +27,9 @@
     "test:report": "cross-env BABEL_ENV=test nyc report --color",
     "playground": "graphql playground",
     "precommit": "lint-staged",
-    "prepublish": "snyk protect"
+    "prepublish": "snyk protect",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "homepage": "https://codesandbox.io/s/github/Saeris/mini-movie-db",
   "main": "src/index.js",
@@ -69,7 +71,8 @@
     "regenerator-runtime": "0.11.1",
     "styled-components": "3.2.6",
     "winston": "^2.3.1",
-    "yup": "0.24.1"
+    "yup": "0.24.1",
+    "snyk": "^1.85.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.42",
@@ -112,7 +115,6 @@
     "serverless": "^1.26.0",
     "serverless-offline": "^3.15.3",
     "serverless-webpack": "^5.0.0",
-    "snyk": "^1.42.6",
     "stylelint": "^9.1.1",
     "stylelint-no-unsupported-browser-features": "^3.0.0",
     "stylelint-order": "^0.8.1",
