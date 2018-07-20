@@ -52,7 +52,7 @@
     "graphql-playground-middleware-lambda": "1.5.1",
     "graphql-tag": "2.9.0",
     "graphql-tools": "^2.5.0",
-    "hapi": "16.6.2",
+    "hapi": "17.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash-es": "^4.17.8",
     "node-vibrant": "3.0.0",
