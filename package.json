@@ -118,7 +118,7 @@
     "stylelint-order": "^0.8.1",
     "stylelint-scss": "^3.0.0",
     "tap-nyan": "^1.1.0",
-    "webpack": "^4.3.0",
+    "webpack": "^4.20.1",
     "webpack-node-externals": "^1.6.0"
   },
   "greenkeeper": {
