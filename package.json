@@ -114,7 +114,7 @@
     "serverless-webpack": "^5.0.0",
     "snyk": "^1.42.6",
     "stylelint": "^9.1.1",
-    "stylelint-no-unsupported-browser-features": "^3.0.0",
+    "stylelint-no-unsupported-browser-features": "^3.0.2",
     "stylelint-order": "^0.8.1",
     "stylelint-scss": "^3.0.0",
     "tap-nyan": "^1.1.0",
