@@ -112,7 +112,7 @@
     "serverless": "^1.26.0",
     "serverless-offline": "^3.15.3",
     "serverless-webpack": "^5.0.0",
-    "snyk": "^1.42.6",
+    "snyk": "^1.100.0",
     "stylelint": "^9.1.1",
     "stylelint-no-unsupported-browser-features": "^3.0.0",
     "stylelint-order": "^0.8.1",
