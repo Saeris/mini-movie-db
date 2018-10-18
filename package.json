@@ -78,7 +78,7 @@
     "@babel/preset-stage-0": "^7.0.0-beta.42",
     "@babel/register": "^7.0.0-beta.42",
     "ava": "^1.0.0-beta.3",
-    "aws-sdk": "^2.125.0",
+    "aws-sdk": "^2.338.0",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^8.0.0-beta.2",
     "babel-minify-webpack-plugin": "^0.3.1",
