@@ -1,6 +1,0 @@
-type Query {
-  movie(id: ID!): Movie!
-  popular(page: Int): [Movie!]!
-  search(query: String! page: Int): [Movie!]!
-  person(id: ID!): Person!
-}

@@ -1,9 +1,9 @@
 import { Component } from "preact"
 import { Formik, Form, Field } from "formik"
 import { Query } from "react-apollo"
-import FontAwesomeIcon from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch, faTimes } from "@fortawesome/fontawesome-free-solid"
-import Yup from "yup"
+import { object, string } from "yup"
 import gql from "graphql-tag"
 import { PosterCard } from "../../components/core"
 import { Layout, Loading, OnError } from "../../components/structural"
@@ -11,26 +11,26 @@ import "./search.scss"
 
 const searchMovies = gql`
   query searchMovies($term: String!, $page: Int!) {
-    movies: search(query: $term, page: $page) {
+    movies: searchMovies(query: $term, page: $page) {
       id
       title
       overview
-      releaseDate
-      poster {
-        small
+      releaseDate @date(as: "MMMM D, YYYY")
+      img: poster {
+        url: custom(size: "w185_and_h278_bestv2")
       }
     }
   }
 `
 const fetchPopular = gql`
   query fetchPopular($page: Int!) {
-    movies: popular(page: $page) {
+    movies: popularMovies(page: $page) {
       id
       title
       overview
-      releaseDate
-      poster {
-        small
+      releaseDate @date(as: "MMMM D, YYYY")
+      img: poster {
+        url: custom(size: "w185_and_h278_bestv2")
       }
     }
   }
@@ -52,8 +52,8 @@ export default class Search extends Component {
       <Layout>
         <Formik
           displayName="MovieSearch"
-          validationSchema={Yup.object().shape({
-            term: Yup.string()
+          validationSchema={object().shape({
+            term: string()
           })}
           onSubmit={({ term }, { setSubmitting, setErrors }) => {
             this.setState({

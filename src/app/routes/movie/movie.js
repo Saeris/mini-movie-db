@@ -1,30 +1,32 @@
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
-import format from "date-fns/format"
 import { Link } from "react-router-dom"
 import { Overlay, PortraitCard, VideoModal } from "../../components/core"
 import { Loading, Layout, OnError } from "../../components/structural"
 import "./movie.scss"
 
-const fetchMovie = gql`
-  query fetchMovie($id: ID!) {
+const getMovie = gql`
+  query getMovie($id: ID!) {
     movie(id: $id) {
       id
       title
       overview
-      releaseDate
+      releaseDate @date(as: "YYYY")
       poster {
-        custom(dimensions: "w300")
+        custom(size: "w300")
       }
       backdrop {
-        custom(dimensions: "w1400_and_h450_face")
+        custom(size: "w1400_and_h450_face")
+        colors {
+          darkMuted
+        }
       }
       cast(limit: 6) {
         id
         name
-        character
-        photo {
-          custom(dimensions: "w150_and_h225_bestv2")
+        description: character
+        img: photo {
+          url: custom(size: "w150_and_h225_bestv2")
         }
       }
       crew(limit: 6) {
@@ -34,10 +36,10 @@ const fetchMovie = gql`
       }
       similar(limit: 6) {
         id
-        title
-        releaseDate
-        poster {
-          custom(dimensions: "w150_and_h225_bestv2")
+        name: title
+        description: releaseDate @date(as: "MMMM D, YYYY")
+        img: poster {
+          url: custom(size: "w150_and_h225_bestv2")
         }
       }
       videos(filter: { site: "YouTube", type: Trailer }) {
@@ -50,7 +52,7 @@ const fetchMovie = gql`
 
 export const Movie = ({ match: { params: { id } } }) => (
   <Layout>
-    <Query query={fetchMovie} variables={{ id }}>
+    <Query query={getMovie} variables={{ id }}>
       {({ loading, error, data: { movie } }) => {
         if (loading) return <Loading />
         if (error) return <OnError errMsg={error} />
@@ -83,7 +85,7 @@ export const Movie = ({ match: { params: { id } } }) => (
                         <Link to={`/movies/${id}`}>
                           <h1>{title}</h1>
                         </Link>
-                        <span>{` (${format(releaseDate, `YYYY`)})`}</span>
+                        <span>{` (${releaseDate})`}</span>
                       </div>
                       <div className="actions">
                         {videos.length && (
@@ -121,11 +123,11 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <h1>Top Billed Cast</h1>
                 <ul>
                   {cast.map(
-                    ({ id: personId, photo: { custom }, name, character }) => (
+                    ({ id: personId, img: { url }, name, description }) => (
                       <PortraitCard
-                        img={custom}
+                        img={url}
                         name={name}
-                        description={character}
+                        description={description}
                         link={`/person/${personId}`}
                       />
                     )
@@ -136,11 +138,11 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <h1>Similar Movies</h1>
                 <ul>
                   {similar.map(
-                    ({ id: similarId, poster: { custom }, title, releaseDate }) => (
+                    ({ id: similarId, img: { url }, name, description }) => (
                       <PortraitCard
-                        img={custom}
-                        name={title}
-                        description={format(releaseDate, `MMMM D, YYYY`)}
+                        img={url}
+                        name={name}
+                        description={description}
                         link={`/movies/${similarId}`}
                       />
                     )

@@ -22,27 +22,21 @@ export const client = new ApolloClient({
         local && dev
           ? `http://localhost:1337/graphql`
           : dev
-            ? `https://y1bhafunj0.execute-api.us-west-2.amazonaws.com/dev/graphql`
-            : `https://zfphsew08j.execute-api.us-west-2.amazonaws.com/production/graphql`,
+            ? `https://4kerznk7i1.execute-api.us-west-2.amazonaws.com/dev/graphql`
+            : `https://498oek2s4b.execute-api.us-west-2.amazonaws.com/production/graphql`,
       headers: {
         'X-GraphQL-Deduplicate': true
       }
     })
   ]),
   cache: new InMemoryCache({
-    dataIdFromObject: o => o.id
-  }),
-  connectToDevTools: dev,
-  clientState: {
-    defaults: {},
-    resolvers: {}
-  },
-  defaultOptions: {
-    query: {
-      errorPolicy: `all`
-    },
-    mutation: {
-      errorPolicy: `all`
+    dataIdFromObject: result => {
+      if (result.id && result.__typename) {
+        return result.__typename + result.id
+      }
+      return null
     }
-  }
+  }),
+  addTypename: true,
+  connectToDevTools: dev
 })

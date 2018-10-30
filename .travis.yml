@@ -14,37 +14,17 @@ branches:
   - /^greenkeeper/.*$/
 
 before_install:
-  - yarn global add serverless
-  - yarn global add greenkeeper-lockfile@1
+  - yarn global add serverless greenkeeper-lockfile@1
 
 install:
   - yarn
-  - yarn add -D babel-core@^7.0.0-0
 
 before_script:
   - greenkeeper-lockfile-update
   - yarn test:coverage
-  - yarn remove babel-core
-  - yarn
 
 script:
   - yarn build
 
 after_script:
   - greenkeeper-lockfile-upload
-
-deploy:
-  # deploy develop to the staging environment
-  - provider: script
-    skip_cleanup: true
-    script: yarn deploy:prod
-    on:
-      node: "8"
-      branch: develop
-  # deploy master to production
-  - provider: script
-    skip_cleanup: true
-    script: yarn deploy:prod
-    on:
-      node: "8"
-      branch: master

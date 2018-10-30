@@ -1,17 +1,13 @@
-import regeneratorRuntime from "regenerator-runtime" // eslint-disable-line
-import { Component } from "preact"
-import * as Vibrant from "node-vibrant"
-import styled from "styled-components"
+import styled from "preact-emotion"
 import { lighten, darken } from "polished"
-import { memoize } from "../../../../../lib"
 
-const Backdrop = styled.div`
+const Backdrop = styled(`div`)`
   width: 100%;
   position: relative;
   z-index: 1;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -28,19 +24,7 @@ const Backdrop = styled.div`
     transition: filter 1s;
   }
 `
-const extractColor = async url => {
-  if (!url) return [8, 28, 37]
-  let img = new Image()
-  img.src = `${url}?${new Date().getTime()}`
-  img.setAttribute(`crossOrigin`, ``)
-  const extracted = await Vibrant.from(img)
-  const palette = await extracted.getPalette()
-  return palette.Vibrant.getRgb() || palette.Muted.getRgb()
-}
-
-const cachedColor = memoize(extractColor)
-
-const Gradient = styled.div`
+const Gradient = styled(`div`)`
   background-image: radial-gradient(
     circle at 20% 50%,
     ${({ color }) => `
@@ -50,28 +34,11 @@ const Gradient = styled.div`
   );
 `
 
-export class Overlay extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      bg: props.bg ? props.bg : null,
-      color: [8, 28, 37]
-    }
-  }
-
-  async componentDidMount() {
-    const color = await cachedColor(this.state.bg)
-      .then(c => c.map(x => parseInt(x, 10)))
-    this.setState({
-      color: color || [8, 28, 37]
-    })
-  }
-
-  render({ children }, { bg, color }) {
-    return (
-      <Backdrop img={bg}>
-        <Gradient color={color}>{children}</Gradient>
-      </Backdrop>
-    )
-  }
+export const Overlay = ({ bg = ``, color = [8, 28, 37], children }) => {
+  console.log(color)
+  return (
+    <Backdrop img={bg}>
+      <Gradient color={color}>{children}</Gradient>
+    </Backdrop>
+  )
 }

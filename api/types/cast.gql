@@ -1,8 +1,0 @@
-type Cast {
-  id: ID!
-  castId: ID!
-  name: String!
-  character: String!
-  photo: Photo
-  order: Int!
-}

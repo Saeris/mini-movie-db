@@ -1,4 +1,4 @@
-import FontAwesomeIcon from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay, faTimes } from "@fortawesome/fontawesome-free-solid"
 import YouTube from "react-youtube"
 import { Modal } from "../../structural/modal"
