@@ -1,37 +1,46 @@
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
-import format from "date-fns/format"
 import { Link } from "react-router-dom"
 import { Overlay, PortraitCard, VideoModal } from "../../components/core"
 import { Loading, Layout, OnError } from "../../components/structural"
 import "./movie.scss"
 
-const fetchMovie = gql`
-  query fetchMovie($id: ID!) {
+const getMovie = gql`
+  query getMovie($id: ID!) {
     movie(id: $id) {
       id
       title
       overview
-      release_date
-      poster
-      backdrop
+      releaseDate @date(as: "YYYY")
+      poster {
+        custom(size: "w300")
+      }
+      backdrop {
+        custom(size: "w1400_and_h450_face")
+        colors {
+          darkMuted
+        }
+      }
       cast(limit: 6) {
         id
         name
-        character
-        profile_path
+        description: character
+        img: photo {
+          url: custom(size: "w150_and_h225_bestv2")
+        }
       }
       crew(limit: 6) {
         id
         name
         job
-        profile_path
       }
       similar(limit: 6) {
         id
-        title
-        release_date
-        poster
+        name: title
+        description: releaseDate @date(as: "MMMM D, YYYY")
+        img: poster {
+          url: custom(size: "w150_and_h225_bestv2")
+        }
       }
       videos(filter: { site: "YouTube", type: Trailer }) {
         name
@@ -43,14 +52,14 @@ const fetchMovie = gql`
 
 export const Movie = ({ match: { params: { id } } }) => (
   <Layout>
-    <Query query={fetchMovie} variables={{ id }}>
+    <Query query={getMovie} variables={{ id }}>
       {({ loading, error, data: { movie } }) => {
         if (loading) return <Loading />
-        if (error) return <OnError />
+        if (error) return <OnError errMsg={error} />
         const {
           title,
           overview,
-          release_date,
+          releaseDate,
           poster,
           backdrop,
           crew,
@@ -62,12 +71,12 @@ export const Movie = ({ match: { params: { id } } }) => (
         return (
           <div className="fullWidth">
             <section id="highlights">
-              <Overlay bg={backdrop}>
+              <Overlay bg={backdrop.custom}>
                 <div className="container">
                   <div className="summary">
                     <div className="poster">
                       <img
-                        src={`//image.tmdb.org/t/p/w300/${poster}`}
+                        src={poster.custom}
                         alt={title}
                       />
                     </div>
@@ -76,7 +85,7 @@ export const Movie = ({ match: { params: { id } } }) => (
                         <Link to={`/movies/${id}`}>
                           <h1>{title}</h1>
                         </Link>
-                        <span>{` (${format(release_date, `YYYY`)})`}</span>
+                        <span>{` (${releaseDate})`}</span>
                       </div>
                       <div className="actions">
                         {videos.length && (
@@ -94,12 +103,12 @@ export const Movie = ({ match: { params: { id } } }) => (
                       <div className="crew">
                         <h2>Featured Crew</h2>
                         <ul>
-                          {crew.map(({ id: crewId, name, job }) => (
+                          {crew.map(({ id: creditId, name, job }) => (
                             <li>
-                              <Link to={`/person/${crewId}`}>
+                              <Link to={`/person/${creditId}`}>
                                 <strong>{name}</strong>
                               </Link>
-                              <span>{job.join(`, `)}</span>
+                              <span>{job.map(hash => Object.values(hash).join(``)).join(`, `)}</span>
                             </li>
                           ))}
                         </ul>
@@ -114,11 +123,11 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <h1>Top Billed Cast</h1>
                 <ul>
                   {cast.map(
-                    ({ id: personId, profile_path, name, character }) => (
+                    ({ id: personId, img: { url }, name, description }) => (
                       <PortraitCard
-                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${profile_path}`}
+                        img={url}
                         name={name}
-                        description={character}
+                        description={description}
                         link={`/person/${personId}`}
                       />
                     )
@@ -129,11 +138,11 @@ export const Movie = ({ match: { params: { id } } }) => (
                 <h1>Similar Movies</h1>
                 <ul>
                   {similar.map(
-                    ({ id: similarId, poster, title, release_date }) => (
+                    ({ id: similarId, img: { url }, name, description }) => (
                       <PortraitCard
-                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${poster}`}
-                        name={title}
-                        description={format(release_date, `MMMM D, YYYY`)}
+                        img={url}
+                        name={name}
+                        description={description}
                         link={`/movies/${similarId}`}
                       />
                     )

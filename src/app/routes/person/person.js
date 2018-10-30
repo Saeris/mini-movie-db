@@ -1,27 +1,54 @@
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
-import format from "date-fns/format"
 import { Link } from "react-router-dom"
 import { PortraitCard } from "../../components/core"
 import { Loading, Layout, OnError } from "../../components/structural"
 import "./person.scss"
 
-const fetchPerson = gql`
+const getPerson = gql`
   query getPerson($id: ID!) {
     person(id: $id) {
       id
       name
       biography
-      profile_path
+      photo {
+        custom(size: "w300")
+      }
       appearsIn(limit: 6) {
-        id
-        title
-        poster
+        ... on Movie {
+          id
+          title
+          releaseDate @date(as: "MMMM D, YYYY")
+          poster {
+            custom(size: "w150_and_h225_bestv2")
+          }
+        }
+        ... on TV {
+          id
+          title: name
+          releaseDate: firstAired @date(as: "MMMM D, YYYY")
+          poster {
+            custom(size: "w150_and_h225_bestv2")
+          }
+        }
       }
       workedOn(limit: 6) {
-        id
-        title
-        poster
+        ... on Movie {
+          id
+          title
+          releaseDate @date(as: "MMMM D, YYYY")
+          poster {
+            custom(size: "w150_and_h225_bestv2")
+          }
+        }
+        ... on TV {
+          id
+          title: name
+          releaseDate: firstAired @date(as: "MMMM D, YYYY")
+          poster {
+            custom(size: "w150_and_h225_bestv2")
+          }
+        }
       }
     }
   }
@@ -29,14 +56,14 @@ const fetchPerson = gql`
 
 export const Person = ({ match: { params: { id } } }) => (
   <Layout>
-    <Query query={fetchPerson} variables={{ id }}>
+    <Query query={getPerson} variables={{ id }}>
       {({ loading, error, data: { person } }) => {
         if (loading) return <Loading />
-        if (error) return <OnError />
+        if (error) return <OnError errMsg={error} />
         const {
           name,
           biography,
-          profile_path,
+          photo,
           appearsIn,
           workedOn
         } = person
@@ -47,18 +74,15 @@ export const Person = ({ match: { params: { id } } }) => (
               <div className="container">
                 <div className="summary">
                   <div className="poster">
-                    <img
-                      src={`//image.tmdb.org/t/p/w300/${profile_path}`}
-                      alt={name}
-                    />
+                    <img src={photo.custom} alt={name} />
                   </div>
                   <div className="info">
-                    <div className="title">
+                    <div className="name">
                       <Link to={`/person/${id}`}>
                         <h1>{name}</h1>
                       </Link>
                     </div>
-                    <div className="overview">
+                    <div className="biography">
                       <h2>Biography</h2>
                       <p>{biography}</p>
                     </div>
@@ -71,12 +95,12 @@ export const Person = ({ match: { params: { id } } }) => (
                 <h1>Worked On</h1>
                 <ul>
                   {workedOn.map(
-                    ({ id: similarId, poster, title, release_date }) => (
+                    ({ id: movieId, poster, title, releaseDate }) => (
                       <PortraitCard
-                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${poster}`}
+                        img={poster && poster.custom}
                         name={title}
-                        description={format(release_date, `MMMM D, YYYY`)}
-                        link={`/movies/${similarId}`}
+                        description={releaseDate ? releaseDate : `TBA`}
+                        link={`/movies/${movieId}`}
                       />
                     )
                   )}
@@ -86,12 +110,12 @@ export const Person = ({ match: { params: { id } } }) => (
                 <h1>Appears In</h1>
                 <ul>
                   {appearsIn.map(
-                    ({ id: similarId, poster, title, release_date }) => (
+                    ({ id: movieId, poster, title, releaseDate }) => (
                       <PortraitCard
-                        img={`//image.tmdb.org/t/p/w150_and_h225_bestv2/${poster}`}
+                        img={poster && poster.custom}
                         name={title}
-                        description={format(release_date, `MMMM D, YYYY`)}
-                        link={`/movies/${similarId}`}
+                        description={releaseDate ? releaseDate : `TBA`}
+                        link={`/movies/${movieId}`}
                       />
                     )
                   )}
