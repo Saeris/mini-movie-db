@@ -17,7 +17,6 @@ export const client = new ApolloClient({
     //new RetryLink(),
     new ApolloLink((operation, forward) => forward(operation).map(response => inflate(response))),
     new BatchHttpLink({
-      credentials: `include`,
       uri:
         local && dev
           ? `http://localhost:1337/graphql`
