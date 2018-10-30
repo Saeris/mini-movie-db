@@ -16,7 +16,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "preact watch --template public/template.html",
-    "build": "preact build --no-prerender --config preact.config.js --template public/template.html",
+    "build": "preact build --no-prerender --template public/template.html",
     "test": "jest -c ./jest.config.js",
     "test:watch": "jest -c ./jest.config.js --watch",
     "test:coverage": "jest -c ./jest.config.js && codecov",
