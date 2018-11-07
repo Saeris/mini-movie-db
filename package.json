@@ -110,7 +110,7 @@
     "node-sass": "^4.7.2",
     "preact-render-spy": "^1.2.2",
     "preact-render-to-string": "^4.1.0",
-    "prettier": "^1.7.0",
+    "prettier": "^1.15.0",
     "sass-loader": "^7.0.1",
     "snyk": "^1.42.6",
     "stylelint": "^9.1.1",
