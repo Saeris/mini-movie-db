@@ -37,7 +37,7 @@
     "apollo-link-error": "^1.0.9",
     "apollo-link-retry": "^2.2.3",
     "apollo-link-state": "^0.4.2",
-    "emotion": "^9.2.12",
+    "emotion": "^10.0.3",
     "formik": "^1.0.3",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.1",
