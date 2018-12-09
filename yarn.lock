@@ -5920,11 +5920,6 @@ graphql-config@^2.0.1:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-deduplicator@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-deduplicator/-/graphql-deduplicator-2.0.2.tgz#d8608161cf6be97725e178df0c41f6a1f9f778f3"
-  integrity sha512-0CGmTmQh4UvJfsaTPppJAcHwHln8Ayat7yXXxdnuWT+Mb1dBzkbErabCWzjXyKh/RefqlGTTA7EQOZHofMaKJA==
-
 graphql-import@0.4.5, graphql-import@^0.4.0, graphql-import@^0.4.4:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.5.tgz#e2f18c28d335733f46df8e0733d8deb1c6e2a645"
@@ -8990,10 +8985,10 @@ node-request-by-swagger@^1.0.6:
   resolved "https://registry.yarnpkg.com/node-request-by-swagger/-/node-request-by-swagger-1.1.3.tgz#d49bb9adc74eff1ce8c70d075e4d8f2e4b365805"
   integrity sha512-granjsEA0c+1GnJaKnOjJy1E3wWLADUnAg+x1eopWOo+oMDfRYKJjCBaInUgrli/yEnvUAJoymGhExP/6tcOyQ==
 
-node-sass@^4.7.2:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.9.4.tgz#349bd7f1c89422ffe7e1e4b60f2055a69fbc5512"
-  integrity sha512-MXyurANsUoE4/6KmfMkwGcBzAnJQ5xJBGW7Ei6ea8KnUKuzHr/SguVBIi3uaUAHtZCPUYkvlJ3Ef5T5VAwVpaA==
+node-sass@^4.11.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.11.0.tgz#183faec398e9cbe93ba43362e2768ca988a6369a"
+  integrity sha512-bHUdHTphgQJZaF1LASx0kAviPH7sGlcyNhWade4eVIpFp6tsn7SV8xNMTbsQFpEV9VXpnwTTnNYlfsZXgGgmkA==
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -10863,10 +10858,10 @@ react-router@^4.2.0, react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-spinners@^0.4.4:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.7.tgz#c3cef1be0ac09e7224922e85827ed87032387312"
-  integrity sha512-+XPY9HkcNshu8+zZ5VomK+dWSkGTycEWH41OJnqItm7ooopLCXngJIh80OTBYZReLQ9gFwLjVsjfZz2sV+14Tg==
+react-spinners@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.0.tgz#0a2f8cc7ba726430f0ebf7c81e496f6f47bd5ac0"
+  integrity sha512-Rk2pTorB37SoCvLmdjy20Tc7YCI/SfngNLj3v6LrjrxXOsKCxs8+BSdNC4yo5g1FQa5VQYiNZ4DLiyn3v1Gu9A==
   dependencies:
     emotion "^9.1.1"
     prop-types "^15.5.10"
