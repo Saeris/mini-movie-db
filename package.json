@@ -49,7 +49,7 @@
     "preact-emotion": "^9.2.12",
     "react-apollo": "^2.1.1",
     "react-clamp-lines": "^1.1.0",
-    "react-intersection-observer": "^6.1.1",
+    "react-intersection-observer": "^7.1.0",
     "react-lazy-images": "^1.1.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.3.1",
