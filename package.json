@@ -56,7 +56,7 @@
     "react-spinners": "0.4.0",
     "react-youtube": "^7.6.0",
     "regenerator-runtime": "^0.12.1",
-    "yup": "^0.26.2"
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
