@@ -5920,11 +5920,6 @@ graphql-config@^2.0.1:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-deduplicator@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-deduplicator/-/graphql-deduplicator-2.0.2.tgz#d8608161cf6be97725e178df0c41f6a1f9f778f3"
-  integrity sha512-0CGmTmQh4UvJfsaTPppJAcHwHln8Ayat7yXXxdnuWT+Mb1dBzkbErabCWzjXyKh/RefqlGTTA7EQOZHofMaKJA==
-
 graphql-import@0.4.5, graphql-import@^0.4.0, graphql-import@^0.4.4:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.5.tgz#e2f18c28d335733f46df8e0733d8deb1c6e2a645"
@@ -6659,7 +6654,7 @@ internal-ip@^3.0.1:
     default-gateway "^2.6.0"
     ipaddr.js "^1.5.2"
 
-invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -10813,12 +10808,20 @@ react-fast-compare@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-1.0.0.tgz#813a039155e49b43ceffe99528fe5e9d97a6c938"
   integrity sha512-dcQpdWr62flXQJuM8/bVEY5/10ad2SYBUafp8H4q4WHR3fTA/MMlp8mpzX12I0CCoEJc1P6QdiMg7U+7lFS6Rw==
 
-react-intersection-observer@^6.1.0, react-intersection-observer@^6.1.1:
+react-intersection-observer@^6.1.0:
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-6.2.3.tgz#42c150d71ef835e5a89a480eed1f07cc416f3700"
   integrity sha512-AYc0yN4sg6UAPImFZtZYWb8crf6G5Fe9AJ3jIFDB+USNlKDvJ49JoCcfB2ovPmcR5eRRKEbKDaxQMXGTI97aMg==
   dependencies:
     invariant "^2.2.4"
+
+react-intersection-observer@^8.22.3:
+  version "8.22.3"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.22.3.tgz#55c323ad128d662c24f266090024370b4d16b82e"
+  integrity sha512-CfpTbXmNes1PtrxoAy9QL0Ztn3h0SmxtpxQMmxJSb0xgxgrFbzv02Lsi4L88xBWH5Xza/oFAzCsz9P9N4AnJhA==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    invariant "^2.0.0"
 
 react-is@^16.3.2:
   version "16.6.0"
@@ -10863,10 +10866,10 @@ react-router@^4.2.0, react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-spinners@^0.4.4:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.7.tgz#c3cef1be0ac09e7224922e85827ed87032387312"
-  integrity sha512-+XPY9HkcNshu8+zZ5VomK+dWSkGTycEWH41OJnqItm7ooopLCXngJIh80OTBYZReLQ9gFwLjVsjfZz2sV+14Tg==
+react-spinners@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.0.tgz#0a2f8cc7ba726430f0ebf7c81e496f6f47bd5ac0"
+  integrity sha512-Rk2pTorB37SoCvLmdjy20Tc7YCI/SfngNLj3v6LrjrxXOsKCxs8+BSdNC4yo5g1FQa5VQYiNZ4DLiyn3v1Gu9A==
   dependencies:
     emotion "^9.1.1"
     prop-types "^15.5.10"
