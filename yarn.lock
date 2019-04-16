@@ -5920,11 +5920,6 @@ graphql-config@^2.0.1:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-deduplicator@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-deduplicator/-/graphql-deduplicator-2.0.2.tgz#d8608161cf6be97725e178df0c41f6a1f9f778f3"
-  integrity sha512-0CGmTmQh4UvJfsaTPppJAcHwHln8Ayat7yXXxdnuWT+Mb1dBzkbErabCWzjXyKh/RefqlGTTA7EQOZHofMaKJA==
-
 graphql-import@0.4.5, graphql-import@^0.4.0, graphql-import@^0.4.4:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.5.tgz#e2f18c28d335733f46df8e0733d8deb1c6e2a645"
@@ -10795,10 +10790,12 @@ react-apollo@^2.1.1:
     lodash.isequal "^4.5.0"
     prop-types "^15.6.0"
 
-react-clamp-lines@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-clamp-lines/-/react-clamp-lines-1.1.0.tgz#81a2ac556aac098479ce7ac031e30b88310cdaa7"
-  integrity sha512-qCKywFxxsI4PY2AMT8KEMH9Q2zNeEjFN6iXr5k+e73a7PZbb0x+V4HxJPMTP0+aP2mz+lwFec3RMKPlodvdXMg==
+react-clamp-lines@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-clamp-lines/-/react-clamp-lines-2.3.0.tgz#5e1c0531b72f9907b1d13490413abcaf51832869"
+  integrity sha512-jsp3nYUwsU6tVtRGMVG4guR3mb4iT8OSGdA2m0SGrA+tZgOJdjslVBmY5LjpAjJeyX/t6jwNiWOrfgBrHDjczg==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-emotion@^9.1.1:
   version "9.2.12"
@@ -10863,10 +10860,10 @@ react-router@^4.2.0, react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-spinners@^0.4.4:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.7.tgz#c3cef1be0ac09e7224922e85827ed87032387312"
-  integrity sha512-+XPY9HkcNshu8+zZ5VomK+dWSkGTycEWH41OJnqItm7ooopLCXngJIh80OTBYZReLQ9gFwLjVsjfZz2sV+14Tg==
+react-spinners@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.0.tgz#0a2f8cc7ba726430f0ebf7c81e496f6f47bd5ac0"
+  integrity sha512-Rk2pTorB37SoCvLmdjy20Tc7YCI/SfngNLj3v6LrjrxXOsKCxs8+BSdNC4yo5g1FQa5VQYiNZ4DLiyn3v1Gu9A==
   dependencies:
     emotion "^9.1.1"
     prop-types "^15.5.10"
