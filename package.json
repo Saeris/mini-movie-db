@@ -103,7 +103,7 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.4.0",
     "esm": "^3.0.12",
-    "graphql-cli": "^2.14.2",
+    "graphql-cli": "^3.0.14",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
     "lint-staged": "^8.0.2",
