@@ -47,7 +47,7 @@
     "preact-compat": "^3.18.0",
     "preact-content-loader": "^1.0.0",
     "preact-emotion": "^9.2.12",
-    "react-apollo": "^2.1.1",
+    "react-apollo": "^3.1.1",
     "react-clamp-lines": "^1.1.0",
     "react-intersection-observer": "^6.1.1",
     "react-lazy-images": "^1.1.0",
