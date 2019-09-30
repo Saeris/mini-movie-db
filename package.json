@@ -51,7 +51,7 @@
     "react-clamp-lines": "^1.1.0",
     "react-intersection-observer": "^6.1.1",
     "react-lazy-images": "^1.1.0",
-    "react-router": "^4.2.0",
+    "react-router": "^5.1.2",
     "react-router-dom": "^4.3.1",
     "react-spinners": "0.4.0",
     "react-youtube": "^7.6.0",
