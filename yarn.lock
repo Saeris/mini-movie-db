@@ -5920,11 +5920,6 @@ graphql-config@^2.0.1:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-deduplicator@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-deduplicator/-/graphql-deduplicator-2.0.2.tgz#d8608161cf6be97725e178df0c41f6a1f9f778f3"
-  integrity sha512-0CGmTmQh4UvJfsaTPppJAcHwHln8Ayat7yXXxdnuWT+Mb1dBzkbErabCWzjXyKh/RefqlGTTA7EQOZHofMaKJA==
-
 graphql-import@0.4.5, graphql-import@^0.4.0, graphql-import@^0.4.4:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.5.tgz#e2f18c28d335733f46df8e0733d8deb1c6e2a645"
@@ -10413,10 +10408,10 @@ preact-render-to-string@^3.6.0, preact-render-to-string@^3.6.3, preact-render-to
   dependencies:
     pretty-format "^3.5.1"
 
-preact-render-to-string@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-4.1.0.tgz#70d98a8385cb86558366c558aad7311ebecb881d"
-  integrity sha512-FlFBJRxo8z4cp6VsDmeYjIEx4ZK2clFJnKIvIj8K1IQCRm7ZgJ/SZ1+BotT86/Nc+V1pNtFabHoUi6gpjx5Pug==
+preact-render-to-string@^5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-5.0.7.tgz#c7ea12ed4a323bc37bb42a4fa587494f8879eb09"
+  integrity sha512-WJQJb6HisjGe2J+29Ha2/9OgEZjVsoYNUc11UyfQadDuREvyKCqR4ZY6KngthKgUT27B+tQrL45jI1B/BEeXXg==
   dependencies:
     pretty-format "^3.8.0"
 
@@ -10863,10 +10858,10 @@ react-router@^4.2.0, react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-spinners@^0.4.4:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.7.tgz#c3cef1be0ac09e7224922e85827ed87032387312"
-  integrity sha512-+XPY9HkcNshu8+zZ5VomK+dWSkGTycEWH41OJnqItm7ooopLCXngJIh80OTBYZReLQ9gFwLjVsjfZz2sV+14Tg==
+react-spinners@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.0.tgz#0a2f8cc7ba726430f0ebf7c81e496f6f47bd5ac0"
+  integrity sha512-Rk2pTorB37SoCvLmdjy20Tc7YCI/SfngNLj3v6LrjrxXOsKCxs8+BSdNC4yo5g1FQa5VQYiNZ4DLiyn3v1Gu9A==
   dependencies:
     emotion "^9.1.1"
     prop-types "^15.5.10"
