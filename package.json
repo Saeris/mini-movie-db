@@ -118,7 +118,7 @@
     "stylelint-order": "^1.0.0",
     "stylelint-scss": "^3.0.0",
     "terser-webpack-plugin": "^1.1.0",
-    "webpack": "^4.3.0"
+    "webpack": "^4.41.2"
   },
   "snyk": true
 }
