@@ -5920,11 +5920,6 @@ graphql-config@^2.0.1:
     lodash "^4.17.4"
     minimatch "^3.0.4"
 
-graphql-deduplicator@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/graphql-deduplicator/-/graphql-deduplicator-2.0.2.tgz#d8608161cf6be97725e178df0c41f6a1f9f778f3"
-  integrity sha512-0CGmTmQh4UvJfsaTPppJAcHwHln8Ayat7yXXxdnuWT+Mb1dBzkbErabCWzjXyKh/RefqlGTTA7EQOZHofMaKJA==
-
 graphql-import@0.4.5, graphql-import@^0.4.0, graphql-import@^0.4.4:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/graphql-import/-/graphql-import-0.4.5.tgz#e2f18c28d335733f46df8e0733d8deb1c6e2a645"
@@ -8139,7 +8134,7 @@ lodash.clone@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.clone/-/lodash.clone-4.5.0.tgz#195870450f5a13192478df4bc3d23d2dea1907b6"
   integrity sha1-GVhwRQ9aExkkeN9Lw9I9LeoZB7Y=
 
-lodash.clonedeep@^4.3.0, lodash.clonedeep@^4.3.1, lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
+lodash.clonedeep@^4.3.0, lodash.clonedeep@^4.3.1, lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
@@ -8208,11 +8203,6 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
-
-lodash.mergewith@^4.6.0:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.1.tgz#639057e726c3afbdb3e7d42741caa8d6e4335927"
-  integrity sha512-eWw5r+PYICtEBgrBE5hhlT6aAa75f411bgDz/ZL2KZqYV03USvucsxcHUIlGTDTECs1eunpI7HOV7U+WLDvNdQ==
 
 lodash.once@^4.0.0:
   version "4.1.1"
@@ -8283,6 +8273,11 @@ lodash@^4.0.0, lodash@^4.11.1, lodash@^4.13.1, lodash@^4.16.4, lodash@^4.17.10, 
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+
+lodash@^4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -8799,7 +8794,12 @@ mute-stream@0.0.7:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
   integrity sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=
 
-nan@^2.10.0, nan@^2.9.2:
+nan@^2.13.2:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
+  integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
+
+nan@^2.9.2:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
   integrity sha512-iji6k87OSXa0CcrLl9z+ZiYSuR2o+c0bGuNmXdrhTQTakxytAFsC56SArGYoiHlJlFoHSnvmhpceZJaXkVuOtA==
@@ -8990,10 +8990,10 @@ node-request-by-swagger@^1.0.6:
   resolved "https://registry.yarnpkg.com/node-request-by-swagger/-/node-request-by-swagger-1.1.3.tgz#d49bb9adc74eff1ce8c70d075e4d8f2e4b365805"
   integrity sha512-granjsEA0c+1GnJaKnOjJy1E3wWLADUnAg+x1eopWOo+oMDfRYKJjCBaInUgrli/yEnvUAJoymGhExP/6tcOyQ==
 
-node-sass@^4.7.2:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.9.4.tgz#349bd7f1c89422ffe7e1e4b60f2055a69fbc5512"
-  integrity sha512-MXyurANsUoE4/6KmfMkwGcBzAnJQ5xJBGW7Ei6ea8KnUKuzHr/SguVBIi3uaUAHtZCPUYkvlJ3Ef5T5VAwVpaA==
+node-sass@^4.13.0:
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.13.0.tgz#b647288babdd6a1cb726de4545516b31f90da066"
+  integrity sha512-W1XBrvoJ1dy7VsvTAS5q1V45lREbTlZQqFbiHb3R3OTTCma0XBtuG6xZ6Z4506nR4lmHPTqVRwxT6KgtWC97CA==
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -9002,12 +9002,10 @@ node-sass@^4.7.2:
     get-stdin "^4.0.1"
     glob "^7.0.3"
     in-publish "^2.0.0"
-    lodash.assign "^4.2.0"
-    lodash.clonedeep "^4.3.2"
-    lodash.mergewith "^4.6.0"
+    lodash "^4.17.15"
     meow "^3.7.0"
     mkdirp "^0.5.1"
-    nan "^2.10.0"
+    nan "^2.13.2"
     node-gyp "^3.8.0"
     npmlog "^4.0.0"
     request "^2.88.0"
@@ -10863,10 +10861,10 @@ react-router@^4.2.0, react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-spinners@^0.4.4:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.7.tgz#c3cef1be0ac09e7224922e85827ed87032387312"
-  integrity sha512-+XPY9HkcNshu8+zZ5VomK+dWSkGTycEWH41OJnqItm7ooopLCXngJIh80OTBYZReLQ9gFwLjVsjfZz2sV+14Tg==
+react-spinners@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.4.0.tgz#0a2f8cc7ba726430f0ebf7c81e496f6f47bd5ac0"
+  integrity sha512-Rk2pTorB37SoCvLmdjy20Tc7YCI/SfngNLj3v6LrjrxXOsKCxs8+BSdNC4yo5g1FQa5VQYiNZ4DLiyn3v1Gu9A==
   dependencies:
     emotion "^9.1.1"
     prop-types "^15.5.10"
