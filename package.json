@@ -106,7 +106,7 @@
     "graphql-cli": "^2.14.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
-    "lint-staged": "^8.0.2",
+    "lint-staged": "^10.0.6",
     "node-sass": "^4.7.2",
     "preact-render-spy": "^1.2.2",
     "preact-render-to-string": "^4.1.0",
