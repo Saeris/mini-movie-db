@@ -90,7 +90,7 @@
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "browser-env": "^3.2.5",
-    "codecov": "^3.0.0",
+    "codecov": "^3.6.3",
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.0.5",
     "del-cli": "^1.1.0",
