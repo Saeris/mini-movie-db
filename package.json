@@ -21,7 +21,8 @@
     "test:watch": "jest -c ./jest.config.js --watch",
     "test:coverage": "jest -c ./jest.config.js && codecov",
     "precommit": "lint-staged",
-    "prepublish": "snyk protect"
+    "prepublish": "yarn run snyk-protect && snyk protect",
+    "snyk-protect": "snyk protect"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.42",
@@ -56,7 +57,8 @@
     "react-spinners": "0.4.0",
     "react-youtube": "^7.6.0",
     "regenerator-runtime": "^0.12.1",
-    "yup": "^0.26.2"
+    "yup": "^0.26.2",
+    "snyk": "^1.319.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -112,7 +114,6 @@
     "preact-render-to-string": "^4.1.0",
     "prettier": "^1.7.0",
     "sass-loader": "^7.0.1",
-    "snyk": "^1.42.6",
     "stylelint": "^9.1.1",
     "stylelint-no-unsupported-browser-features": "^3.0.0",
     "stylelint-order": "^1.0.0",
