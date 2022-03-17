@@ -43,7 +43,7 @@
     "graphql-tag": "^2.9.1",
     "polished": "^2.0.3",
     "preact": "^8.2.7",
-    "preact-cli": "^3.0.0-next.13",
+    "preact-cli": "^3.0.0",
     "preact-compat": "^3.18.0",
     "preact-content-loader": "^1.0.0",
     "preact-emotion": "^9.2.12",
@@ -56,7 +56,7 @@
     "react-spinners": "0.4.0",
     "react-youtube": "^7.6.0",
     "regenerator-runtime": "^0.12.1",
-    "yup": "^0.26.2"
+    "yup": "^0.30.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
